@@ -11,7 +11,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • Preparation:\
 &emsp;READ = readme.md
 
-• Components:\
+• Custom & Preset Components:\
 &emsp;FE-INPA = Input Password\
 &emsp;FE-INWE = Input With Error
 ## Available Scripts
