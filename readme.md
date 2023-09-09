@@ -3,10 +3,16 @@
 This is monorepo contain frontend project using ReactJS and backend project using ExpressJS.
 
 ## What I Did:
-• git clone https://github.com/purwadhikafullstack/JCWD011005.git
-• git checkout -b 'FP-4'
-• npm install
+• git clone https://github.com/purwadhikafullstack/JCWD011005.git \
+• git checkout -b 'FP-4'\
+• npm install\
 
+## Version Code:
+• Preparation:\
+&emsp;READ = readme.md
+
+• Components:\
+&emsp;FE-INWE = Input With Error
 ## Available Scripts
 
 In the project directory, you can run:
