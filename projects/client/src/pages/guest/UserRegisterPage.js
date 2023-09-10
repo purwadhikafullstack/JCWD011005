@@ -1,8 +1,31 @@
 import { Box, Input } from '@chakra-ui/react'
 import React from 'react'
 import InputWithError from '../../components/input/InputWithError'
+import axios from 'axios';
+import { useFormik } from 'formik'
+import * as Yup from "yup";
 
 const UserRegisterPage = () => {
+  const addUserSchema = useFormik({
+    initialValues: {
+      roleName: ""
+    },
+    validationSchema: Yup.object({
+      roleName: Yup.string()
+        .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!")
+        .required("Peran tidak boleh kosong!"),
+    }),
+    onSubmit: async values => {
+      await axios.post("http://localhost:8000/api/admin/role/create", {
+        roleName: values.roleName
+      }).then(resp => {
+        // props.fetchData();
+      }).catch(error => {
+        console.log(error.response.data.error);
+        alert(error.response.data.message);
+      });
+    }
+  });
   return (
     <Box>
       <InputWithError margin={"0"} padding={"1"} errors={addUserSchema.errors.firstName} touched={addUserSchema.touched.firstName}>
