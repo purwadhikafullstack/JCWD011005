@@ -6,6 +6,14 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • git clone https://github.com/purwadhikafullstack/JCWD011005.git \
 • git checkout -b 'FP-4'\
 • npm install\
+• [Installed Dependencies]
+
+## Installed Dependencies:
+1. Chakra UI:\
+&emsp;• npm run install:client @chakra-ui/react\
+&emsp;• npm run install:client @emotion/react\
+&emsp;• npm run install:client @emotion/styled\
+&emsp;• npm run install:client framer-motion
 
 ## Version Code:
 • Preparation:\
