@@ -7,6 +7,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • git checkout -b 'FP-4'\
 • npm install\
 • [Installed Dependencies]
+• [client/src/index.js] import { ChakraProvider } from '@chakra-ui/react';
+• [client/src/index.js] <ChakraProvider>...</ChakraProvider>
 
 ## Installed Dependencies:
 1. Chakra UI:\
