@@ -9,6 +9,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 ## Version Code:
 • Preparation:\
+&emsp;DPNC = Dependencies\
 &emsp;READ = readme.md
 
 • Custom & Preset Components:\
