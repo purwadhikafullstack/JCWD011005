@@ -15,7 +15,10 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;• npm run install:client @chakra-ui/react\
 &emsp;• npm run install:client @emotion/react\
 &emsp;• npm run install:client @emotion/styled\
-&emsp;• npm run install:client framer-motion
+&emsp;• npm run install:client framer-motion\
+2. Formik Yup:\
+&emsp;• npm run install:client formik\
+&emsp;• npm run install:client yup\
 
 ## Version Code:
 • Preparation:\
