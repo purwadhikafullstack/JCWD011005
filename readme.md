@@ -19,6 +19,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 2. Formik Yup:\
 &emsp;• npm run install:client formik\
 &emsp;• npm run install:client yup\
+3. React Router DOM:\
+&emsp;• npm run install:client react-router-dom
 
 ## Version Code:
 • Preparation:\
