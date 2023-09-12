@@ -30,6 +30,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 4. npm install -g yarn
 5. npm run server npx sequelize-cli init
 6. npm run install:server bcrypt
+6. npm run install:server jsonwebtoken
 
 ## Version Code:
 • Preparation:\
