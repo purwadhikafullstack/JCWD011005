@@ -1,4 +1,4 @@
-import { Box, Input } from '@chakra-ui/react'
+import { Box, Button, Input } from '@chakra-ui/react'
 import React from 'react'
 import InputWithError from '../../components/input/InputWithError'
 import axios from 'axios';
@@ -27,7 +27,7 @@ const UserRegisterPage = () => {
     }
   });
   return (
-    <Box>
+    <form onSubmit={addUserSchema.handleSubmit}>
       <InputWithError margin={"0"} padding={"1"} errors={addUserSchema.errors.firstName} touched={addUserSchema.touched.firstName}>
         <Input type="text" name="firstName" placeholder='Nama Depan' bgColor="white" borderColor={"grey"} color={"black"} value={addUserSchema.values.firstName} onChange={addUserSchema.handleChange}/>
       </InputWithError>
@@ -43,7 +43,8 @@ const UserRegisterPage = () => {
       <InputWithError margin={"0"} padding={"1"} errors={addUserSchema.errors.phone} touched={addUserSchema.touched.phone}>
         <Input type="text" name="phone" placeholder='Nomor Telepon' bgColor="white" borderColor={"grey"} color={"black"} value={addUserSchema.values.phone} onChange={addUserSchema.handleChange}/>
       </InputWithError>
-    </Box>
+      <Button type="submit" colorScheme={"green"} marginX="5">Mendaftar</Button>
+    </form>
   )
 }
 
