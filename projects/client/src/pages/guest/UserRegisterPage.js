@@ -15,9 +15,23 @@ const UserRegisterPage = () => {
       phone: "",
     },
     validationSchema: Yup.object({
-      roleName: Yup.string()
+      firstName: Yup.string()
         .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!")
         .required("Peran tidak boleh kosong!"),
+      lastName: Yup.string()
+        .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!"),
+      email: Yup.string()
+        .email("Format penulisan email tidak valid!")
+        .required("Email tidak boleh kosong!"),
+      password: Yup.string()
+        .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_+=,{}[\]|:;'"><>?/])[a-zA-Z\d`~!@#$%^&*()_+=,{}[\]|:;'"><>?/]+$/, "Kata sandi harus kombinasi alphanumerik dan karakter spesial!")
+        .min(6, "Kata sandi setidaknya minimal 6 karakter!")
+        .required("Kata sandi tidak boleh kosong!"),
+      phone: Yup.string()
+        .matches(/[0-9]/, "Nomor ponsel yang diperbolehkan hanya angka!")
+        .min(10, "Nomor ponsel setidaknya minimal 10 digit!")
+        .max(13, "Nomor ponsel maksimal 13 digit!")
+        .required("Nomor ponsel tidak boleh kosong!")
     }),
     onSubmit: async values => {
       await axios.post("http://localhost:8000/api/admin/role/create", {
