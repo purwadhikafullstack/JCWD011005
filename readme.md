@@ -29,6 +29,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 3. npm run install:server mysql2
 4. npm install -g yarn
 5. npm run server npx sequelize-cli init
+6. npm run install:server bcrypt
 
 ## Version Code:
 • Preparation:\
