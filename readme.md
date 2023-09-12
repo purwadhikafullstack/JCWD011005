@@ -11,6 +11,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • [client/src/index.js] <ChakraProvider>...</ChakraProvider>
 
 ## Installed Dependencies:
+### Client / Front End
 1. Chakra UI:\
 &emsp;• npm run install:client @chakra-ui/react\
 &emsp;• npm run install:client @emotion/react\
@@ -22,6 +23,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 3. React Router DOM:\
 &emsp;• npm run install:client react-router-dom
 
+### Server / Back End
 ## Version Code:
 • Preparation:\
 &emsp;DPNC = Dependencies\
