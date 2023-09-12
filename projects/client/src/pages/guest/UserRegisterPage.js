@@ -1,11 +1,15 @@
 import { Box, Button, Input } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import InputWithError from '../../components/input/InputWithError'
 import axios from 'axios';
 import { useFormik } from 'formik'
 import * as Yup from "yup";
+import InputPassword from '../../components/input/InputPassword';
 
 const UserRegisterPage = () => {
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+
   const userRegisterSchema = useFormik({
     initialValues: {
       firstName: "",
@@ -56,7 +60,7 @@ const UserRegisterPage = () => {
         <Input type="text" name="email" placeholder='Nama Depan' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.email} onChange={userRegisterSchema.handleChange}/>
       </InputWithError>
       <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.password} touched={userRegisterSchema.touched.password}>
-        <Input type="text" name="password" placeholder='Password' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.password} onChange={userRegisterSchema.handleChange}/>
+        <InputPassword name="password" value={userRegisterSchema.values.password} onChange={userRegisterSchema.handleChange} handleClick={handleClick} show={show}/>
       </InputWithError>
       <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.phone} touched={userRegisterSchema.touched.phone}>
         <Input type="text" name="phone" placeholder='Nomor Telepon' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.phone} onChange={userRegisterSchema.handleChange}/>
