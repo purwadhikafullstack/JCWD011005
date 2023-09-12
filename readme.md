@@ -24,6 +24,9 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;• npm run install:client react-router-dom
 
 ### Server / Back End
+1. npm run install:server --save-dev sequelize-cli 
+2. npm run install:server sequelize
+
 ## Version Code:
 • Preparation:\
 &emsp;DPNC = Dependencies\
