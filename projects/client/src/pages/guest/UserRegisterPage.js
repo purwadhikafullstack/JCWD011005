@@ -8,7 +8,11 @@ import * as Yup from "yup";
 const UserRegisterPage = () => {
   const userRegisterSchema = useFormik({
     initialValues: {
-      roleName: ""
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      phone: "",
     },
     validationSchema: Yup.object({
       roleName: Yup.string()
