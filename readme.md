@@ -28,13 +28,14 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 2. npm run install:server sequelize\
 3. npm run install:server mysql2
 4. npm install -g yarn
-5. npm run server npx sequelize-cli init
+5. npm run server sequelize-cli init
 6. npm run install:server bcrypt
 7. npm run install:server jsonwebtoken
 8. npm run install:server nodemailer
-8. npm run install:server firebase
+9. npm run install:server firebase
 
 ## Version Code:
+### Client / Front End
 • Preparation:\
 &emsp;DPNC = Dependencies\
 &emsp;READ = readme.md
@@ -42,6 +43,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • Custom & Preset Components:\
 &emsp;FE-INPA = Input Password\
 &emsp;FE-INWE = Input With Error
+
+### Server / Back End
 ## Available Scripts
 
 In the project directory, you can run:
