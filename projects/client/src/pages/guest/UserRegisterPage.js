@@ -39,7 +39,11 @@ const UserRegisterPage = () => {
     }),
     onSubmit: async values => {
       await axios.post("http://localhost:8000/api/user/register", {
-        roleName: values.roleName
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+        phone: values.phone,
       }).then(resp => {
         // props.fetchData();
       }).catch(error => {
