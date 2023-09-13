@@ -57,7 +57,7 @@ const UserRegisterPage = () => {
         <Input type="text" name="lastName" placeholder='Nama Belakang' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.lastName} onChange={userRegisterSchema.handleChange}/>
       </InputWithError>
       <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.email} touched={userRegisterSchema.touched.email}>
-        <Input type="text" name="email" placeholder='Nama Depan' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.email} onChange={userRegisterSchema.handleChange}/>
+        <Input type="text" name="email" placeholder='email' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.email} onChange={userRegisterSchema.handleChange}/>
       </InputWithError>
       <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.password} touched={userRegisterSchema.touched.password}>
         <InputPassword name="password" value={userRegisterSchema.values.password} onChange={userRegisterSchema.handleChange} handleClick={handleClick} show={show}/>
