@@ -1,6 +1,6 @@
 const { authController } = require("../controllers");
 const router = require("express").Router();
-const { firstNameValidator, lastNameValidator, emailValidator, passwordValidator, phoneValidator, dbVerificator, tokenVerificator } = require("../middleware");
+const { firstNameValidator, lastNameValidator, emailValidator, passwordValidator, phoneValidator, dbVerificator, tokenVerificator } = require("../middlewares/auth/inputValidator");
 
 // router.post("/login", emailValidator, passwordValidator, authController.login);
 router.post("/register", firstNameValidator, lastNameValidator, emailValidator, passwordValidator, phoneValidator, dbVerificator, authController.register);
