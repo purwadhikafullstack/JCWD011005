@@ -1,8 +1,6 @@
 const Yup = require("yup");
 
 // Yup.object({
-//     lastName: Yup.string()
-//       .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!"),
 //     password: Yup.string()
 //       .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_+=,{}[\]|:;'"><>?/])[a-zA-Z\d`~!@#$%^&*()_+=,{}[\]|:;'"><>?/]+$/, "Kata sandi harus kombinasi alphanumerik dan karakter spesial!")
 //       .min(6, "Kata sandi setidaknya minimal 6 karakter!")
@@ -51,18 +49,20 @@ const firstNameValidator = (req, res, next) => {
 }
 
 const lastNameValidator = (req, res, next) => {
-    let result = false;
-    let { lastName } = req.body;
-    if (lastName != false) {
-        lastName = lastName.toLowerCase();
-        const pattern = /[a-zA-Z]/;
-        for (let i = 0; i < lastName.length; i++) {
-            result = pattern.test(lastName[i]);
-            if (result == false) return res.status(422).send("Hanya huruf yang diperbolehkan!");
-        }
-    }
+    const { lastName } = req.body;
+    let schema = Yup.object({
+        lastName: Yup.string()
+            .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!"),
+    });
+    try {
+        schema.validateSync({
+            lastName: lastName
+        });
 
-    return next();
+        return next();
+    } catch (err) {
+        return res.status(422).send(err.message);
+    }
 }
 
 const passwordValidator = (req, res, next) => {
