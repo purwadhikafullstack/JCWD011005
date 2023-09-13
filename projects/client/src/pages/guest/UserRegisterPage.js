@@ -21,7 +21,7 @@ const UserRegisterPage = () => {
     validationSchema: Yup.object({
       firstName: Yup.string()
         .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!")
-        .required("Peran tidak boleh kosong!"),
+        .required("Nama depan tidak boleh kosong!"),
       lastName: Yup.string()
         .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!"),
       email: Yup.string()
