@@ -55,6 +55,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 • Routes:\
 &emsp;BE-ROUT = index.js of Routes\
+&emsp;BE-AURO = Auth Routes
 
 • Middlewares:\
 
