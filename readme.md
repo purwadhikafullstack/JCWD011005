@@ -32,6 +32,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 6. npm run install:server bcrypt
 7. npm run install:server jsonwebtoken
 8. npm run install:server nodemailer
+8. npm run install:server firebase
 
 ## Version Code:
 • Preparation:\
