@@ -22,7 +22,7 @@ app.use(express.json());
 // NOTE : Add your routes here
 const { authRoutes } = require("./routes");
 
-app.use("/api/auth", authRoutes);
+app.use("/api", authRoutes);
 
 app.get("/api", (req, res) => {
   res.send(`Hello, this is my API`);
