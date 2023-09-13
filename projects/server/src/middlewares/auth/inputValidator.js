@@ -1,9 +1,6 @@
 const Yup = require("yup");
 
 // Yup.object({
-//     firstName: Yup.string()
-//       .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!")
-//       .required("Nama depan tidak boleh kosong!"),
 //     lastName: Yup.string()
 //       .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!"),
 //     password: Yup.string()
@@ -36,17 +33,21 @@ const emailValidator = (req, res, next) => {
 };
 
 const firstNameValidator = (req, res, next) => {
-    let result = false;
-    let { firstName } = req.body;
-    if (firstName == false) return res.status(422).send("Nama depan tidak boleh kosong!");
+    const { firstName } = req.body;
+    let schema = Yup.object({
+        firstName: Yup.string()
+            .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!")
+            .required("Nama depan tidak boleh kosong!"),
+    });
+    try {
+        schema.validateSync({
+            firstName: firstName
+        });
 
-    firstName = firstName.toLowerCase();
-    const pattern = /[a-zA-Z]/;
-    for (let i = 0; i < firstName.length; i++) {
-        result = pattern.test(firstName[i]);
-        if (result == false) return res.status(422).send("Hanya huruf yang diperbolehkan!");
+        return next();
+    } catch (err) {
+        return res.status(422).send(err.message);
     }
-    return next();
 }
 
 const lastNameValidator = (req, res, next) => {
