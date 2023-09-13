@@ -54,6 +54,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • Migrations:\
 
 • Routes:\
+&emsp;BE-ROUT = index.js of Routes\
 
 • Middlewares:\
 
