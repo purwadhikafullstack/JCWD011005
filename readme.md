@@ -63,6 +63,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;BE-MODL = index.js of Model
 
 • Firebase:\
+&emsp;BE-FIRE = firebase.js
 ## Available Scripts
 
 In the project directory, you can run:
