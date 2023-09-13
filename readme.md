@@ -44,6 +44,9 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;FE-INPA = Input Password\
 &emsp;FE-INWE = Input With Error
 
+• Pages:\
+&emsp;FE-URPA = User Register Page
+
 ### Server / Back End
 ## Available Scripts
 
