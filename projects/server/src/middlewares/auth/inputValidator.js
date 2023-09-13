@@ -1,37 +1,75 @@
+const Yup = require("yup");
+
+// Yup.object({
+//     firstName: Yup.string()
+//       .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!")
+//       .required("Nama depan tidak boleh kosong!"),
+//     lastName: Yup.string()
+//       .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!"),
+//     password: Yup.string()
+//       .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_+=,{}[\]|:;'"><>?/])[a-zA-Z\d`~!@#$%^&*()_+=,{}[\]|:;'"><>?/]+$/, "Kata sandi harus kombinasi alphanumerik dan karakter spesial!")
+//       .min(6, "Kata sandi setidaknya minimal 6 karakter!")
+//       .required("Kata sandi tidak boleh kosong!"),
+//     phone: Yup.string()
+//       .matches(/[0-9]/, "Nomor ponsel yang diperbolehkan hanya angka!")
+//       .min(10, "Nomor ponsel setidaknya minimal 10 digit!")
+//       .max(13, "Nomor ponsel maksimal 13 digit!")
+//       .required("Nomor ponsel tidak boleh kosong!")
+//   }),
+
 const emailValidator = (req, res, next) => {
-    let result = false;
-    let { email } = req.body;
-    if (email == false) return res.status(422).send("Email tidak boleh kosong!");
-
-    email = email.toLowerCase();
-
-    // dimasivonanggitama @ gmail    .com
-    // ------------------ | ------   ----------------
-    //     email name     | domain   top level domain
-    //                    |
-    //              at / separator
-
-    const atChar = email.indexOf("@");
-    if (atChar < 0) return res.status(422).send("Email harus memiliki karakter '@' !");
-
-    const domain = email.substr(atChar + 1, email.length - 1);
-    const dotCharDomain = domain.indexOf(".");
-    if (dotCharDomain < 0) return res.status(422).send("Domain email harus memiliki karakter titik (.) !");
-
-    const domainPattern = /[a-z.]/;
-    for (let i = 0; i < domain.length; i++) {
-        result = domainPattern.test(domain[i]);
-        if (result == false) return res.status(422).send("Karakter pada domain yang diperbolehkan hanya huruf dan titik (.) !");
+    const { email } = req.body;
+    let schema = Yup.object({
+        email: Yup.string()
+            .email("Format penulisan email tidak valid!")
+            .required("Email tidak boleh kosong!")
+    });
+    try {
+        schema.validateSync({
+            email: email
+        });
+        
+        return next();
+    } catch (err) {
+        return res.status(422).send(err.message);
     }
+    
+    // return next();
+    
+    // let result = false;
+    // let { email } = req.body;
+    // if (email == false) return res.status(422).send("Email tidak boleh kosong!");
 
-    const aliasName = email.substr(0, atChar);
-    const aliasNamePattern = /[a-z0-9._]/;
-    for (let i = 0; i < aliasName.length; i++) {
-        result = aliasNamePattern.test(aliasName[i]);
-        if (result == false) return res.status(422).send("Karakter pada nama email yang diperbolehkan hanya huruf, angka, titik (.) dan underscore (_) !");
-    }
+    // email = email.toLowerCase();
 
-    return next();
+    // // dimasivonanggitama @ gmail    .com
+    // // ------------------ | ------   ----------------
+    // //     email name     | domain   top level domain
+    // //                    |
+    // //              at / separator
+
+    // const atChar = email.indexOf("@");
+    // if (atChar < 0) return res.status(422).send("Email harus memiliki karakter '@' !");
+
+    // const domain = email.substr(atChar + 1, email.length - 1);
+    // const dotCharDomain = domain.indexOf(".");
+    // if (dotCharDomain < 0) return res.status(422).send("Domain email harus memiliki karakter titik (.) !");
+
+    // const domainPattern = /[a-z.]/;
+    // for (let i = 0; i < domain.length; i++) {
+    //     result = domainPattern.test(domain[i]);
+    //     if (result == false) return res.status(422).send("Karakter pada domain yang diperbolehkan hanya huruf dan titik (.) !");
+    // }
+
+    // const aliasName = email.substr(0, atChar);
+    // const aliasNamePattern = /[a-z0-9._]/;
+    // for (let i = 0; i < aliasName.length; i++) {
+    //     result = aliasNamePattern.test(aliasName[i]);
+    //     if (result == false) return res.status(422).send("Karakter pada nama email yang diperbolehkan hanya huruf, angka, titik (.) dan underscore (_) !");
+    // }
+
+    // return next();
+    
 };
 
 const firstNameValidator = (req, res, next) => {
