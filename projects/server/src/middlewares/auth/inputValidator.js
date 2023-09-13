@@ -1,10 +1,6 @@
 const Yup = require("yup");
 
 // Yup.object({
-//     password: Yup.string()
-//       .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_+=,{}[\]|:;'"><>?/])[a-zA-Z\d`~!@#$%^&*()_+=,{}[\]|:;'"><>?/]+$/, "Kata sandi harus kombinasi alphanumerik dan karakter spesial!")
-//       .min(6, "Kata sandi setidaknya minimal 6 karakter!")
-//       .required("Kata sandi tidak boleh kosong!"),
 //     phone: Yup.string()
 //       .matches(/[0-9]/, "Nomor ponsel yang diperbolehkan hanya angka!")
 //       .min(10, "Nomor ponsel setidaknya minimal 10 digit!")
@@ -66,33 +62,22 @@ const lastNameValidator = (req, res, next) => {
 }
 
 const passwordValidator = (req, res, next) => {
-    let result = false;
-    let { password } = req.body;
-    if (password == false) return res.status(422).send("Password tidak boleh kosong!");
-    if (password.length < 6) return res.status(422).send("Password setidaknya minimal 6 karakter!");
+    const { password } = req.body;
+    let schema = Yup.object({
+        password: Yup.string()
+            .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_+=,{}[\]|:;'"><>?/])[a-zA-Z\d`~!@#$%^&*()_+=,{}[\]|:;'"><>?/]+$/, "Kata sandi harus kombinasi alphanumerik dan karakter spesial!")
+            .min(6, "Kata sandi setidaknya minimal 6 karakter!")
+            .required("Kata sandi tidak boleh kosong!"),
+    });
+    try {
+        schema.validateSync({
+            password: password
+        });
 
-    const capitalizePattern = /[A-Z]/;
-    for (let i = 0; i < password.length; i++) {
-        result = capitalizePattern.test(password[i]);
-        if (result) break;
+        return next();
+    } catch (err) {
+        return res.status(422).send(err.message);
     }
-    if (result === false) return res.status(422).send("Password setidaknya terdapat huruf kapital!");
-    
-    const numericPattern = /[0-9]/;
-    for (let i = 0; i < password.length; i++) {
-        result = numericPattern.test(password[i]);
-        if (result) break;
-    }
-    if (result === false) return res.status(422).send("Password setidaknya terdapat angka!");
-    
-    const specialCharPattern = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/;
-    for (let i = 0; i < password.length; i++) {
-        result = specialCharPattern.test(password[i]);
-        if (result) break;
-    }
-    if (result === false) return res.status(422).send("Password setidaknya terdapat karakter spesial/unik!");
-
-    return next();
 }
 
 const phoneValidator = (req, res, next) => {
