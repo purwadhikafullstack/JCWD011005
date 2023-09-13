@@ -61,7 +61,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • Middlewares:\
 
 • Controllers:\
-&emsp;BE-CONT = index.js of Controllers
+&emsp;BE-CONT = index.js of Controllers\
+&emsp;BE-AUCO = Auth Controllers
 
 • Models:\
 &emsp;BE-MODL = index.js of Model
