@@ -48,6 +48,9 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;FE-URPA = User Register Page
 
 ### Server / Back End
+• Preparation:\
+&emsp;BE-CONF = config.js
+
 • Migrations:\
 
 • Routes:\
