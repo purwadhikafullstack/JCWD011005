@@ -38,7 +38,7 @@ const UserRegisterPage = () => {
         .required("Nomor ponsel tidak boleh kosong!")
     }),
     onSubmit: async values => {
-      await axios.post("http://localhost:8000/api/admin/role/create", {
+      await axios.post("http://localhost:8000/api/user/register", {
         roleName: values.roleName
       }).then(resp => {
         // props.fetchData();
@@ -53,7 +53,7 @@ const UserRegisterPage = () => {
       <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.firstName} touched={userRegisterSchema.touched.firstName}>
         <Input type="text" name="firstName" placeholder='Nama Depan' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.firstName} onChange={userRegisterSchema.handleChange}/>
       </InputWithError>
-      <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.firstName} touched={userRegisterSchema.touched.lastName}>
+      <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.lastName} touched={userRegisterSchema.touched.lastName}>
         <Input type="text" name="lastName" placeholder='Nama Belakang' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.lastName} onChange={userRegisterSchema.handleChange}/>
       </InputWithError>
       <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.email} touched={userRegisterSchema.touched.email}>
