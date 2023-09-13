@@ -81,19 +81,23 @@ const passwordValidator = (req, res, next) => {
 }
 
 const phoneValidator = (req, res, next) => {
-    let result = false;
-    let { phone } = req.body;
-    if (phone == false) return res.status(422).send("Nomor ponsel tidak boleh kosong!");
-    if (phone.length < 10 || phone.length > 13) return res.status(422).send("Nomor ponsel harus antara 10-13 digit!");
+    const { phone } = req.body;
+    let schema = Yup.object({
+        phone: Yup.string()
+          .matches(/[0-9]/, "Nomor ponsel yang diperbolehkan hanya angka!")
+          .min(10, "Nomor ponsel setidaknya minimal 10 digit!")
+          .max(13, "Nomor ponsel maksimal 13 digit!")
+          .required("Nomor ponsel tidak boleh kosong!")
+    });
+    try {
+        schema.validateSync({
+            phone: phone
+        });
 
-    const numericPattern = /[0-9]/;
-    for (let i = 0; i < phone.length; i++) {
-        result = numericPattern.test(phone[i]);
-        if (result === false) return res.status(422).send("Nomor ponsel yang diperbolehkan hanya angka!");
+        return next();
+    } catch (err) {
+        return res.status(422).send(err.message);
     }
-
-    if (`${phone[0]}${phone[1]}` !== '08') return res.status(422).send("Nomor ponsel harus diawali dengan '08'!");
-    return next();
 }
 
 module.exports = { firstNameValidator, lastNameValidator, emailValidator, passwordValidator, phoneValidator };
