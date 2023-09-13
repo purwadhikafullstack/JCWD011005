@@ -48,6 +48,21 @@ const firstNameValidator = (req, res, next) => {
     return next();
 }
 
+const lastNameValidator = (req, res, next) => {
+    let result = false;
+    let { lastName } = req.body;
+    if (lastName != false) {
+        lastName = lastName.toLowerCase();
+        const pattern = /[a-zA-Z]/;
+        for (let i = 0; i < lastName.length; i++) {
+            result = pattern.test(lastName[i]);
+            if (result == false) return res.status(422).send("Hanya huruf yang diperbolehkan!");
+        }
+    }
+
+    return next();
+}
+
 const passwordValidator = (req, res, next) => {
     let result = false;
     let { password } = req.body;
@@ -94,4 +109,4 @@ const phoneValidator = (req, res, next) => {
     return next();
 }
 
-module.exports = { usernameValidator, emailValidator, passwordValidator, phoneValidator };
+module.exports = { firstNameValidator, lastNameValidator, emailValidator, passwordValidator, phoneValidator };
