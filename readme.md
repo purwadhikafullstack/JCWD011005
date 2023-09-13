@@ -57,6 +57,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • Controllers:\
 
 • Models:\
+&emsp;BE-MODL = index.js of Model
 
 • Firebase:\
 ## Available Scripts
