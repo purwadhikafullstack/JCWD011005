@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+
 // import { initializeApp } from "firebase/app";
 // import { getAuth } from "firebase/auth";
 const { initializeApp } = require("firebase/app");
@@ -21,9 +22,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
+
 // export const auth = getAuth(app);
 // export default app;
-
 const auth = getAuth(app);
 module.exports = auth;
 module.exports.default = app;
