@@ -69,6 +69,17 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 • Firebase:\
 &emsp;BE-FIRE = firebase.js
+
+## ORM: Sequelize
+1. Create migration file
+npx sequelize-cli migration:generate --name create-user-table
+npx sequelize-cli migration:generate --name create-blog-table
+
+2. Execute create table from migration file:
+npx sequelize-cli db:migrate
+npx sequelize db:migrate
+
+
 ## Available Scripts
 
 In the project directory, you can run:
