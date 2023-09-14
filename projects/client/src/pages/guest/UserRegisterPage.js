@@ -38,7 +38,7 @@ const UserRegisterPage = () => {
         .required("Nomor ponsel tidak boleh kosong!")
     }),
     onSubmit: async values => {
-      await axios.post("http://localhost:8000/api/user/register", {
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/register`, {
         firstName: values.firstName,
         lastName: values.lastName,
         email: values.email,
