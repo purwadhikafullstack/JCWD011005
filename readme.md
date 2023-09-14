@@ -52,7 +52,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;BE-CONF = config.js
 
 • Migrations:\
-&emsp;BE-IVMI = Input Validator of Auth
+&emsp;BE-USMI = User table migration
 
 • Routes:\
 &emsp;BE-ROUT = index.js of Routes\
