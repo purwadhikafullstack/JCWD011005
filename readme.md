@@ -72,9 +72,9 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 ## ORM: Sequelize
 1. Create migration file
-npx sequelize-cli migration:generate --name create-user-table
-npx sequelize-cli migration:generate --name create-login_method-table
-npx sequelize-cli migration:generate --name create-role-table
+npm run server sequelize-cli migration:generate --name create-user-table
+npm run server sequelize-cli migration:generate --name create-login_method-table
+npm run server sequelize-cli migration:generate --name create-role-table
 
 2. Execute create table from migration file:
 npx sequelize-cli db:migrate
