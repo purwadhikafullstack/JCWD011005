@@ -30,7 +30,7 @@ const firstNameValidator = (req, res, next) => {
     const { firstName } = req.body;
     let schema = Yup.object({
         firstName: Yup.string()
-            .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!")
+            .matches(/^[a-zA-Z]+$/, "Nama depan hanya huruf yang diperbolehkan!")
             .required("Nama depan tidak boleh kosong!"),
     });
     try {
@@ -48,12 +48,15 @@ const lastNameValidator = (req, res, next) => {
     const { lastName } = req.body;
     let schema = Yup.object({
         lastName: Yup.string()
-            .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!"),
+            .matches(/^[a-zA-Z]+$/, "Nama belakang hanya huruf yang diperbolehkan!"),
     });
     try {
-        schema.validateSync({
-            lastName: lastName
-        });
+        if (lastName != false) {
+            console.log("true");
+            schema.validateSync({
+                lastName: lastName
+            });
+        }
 
         return next();
     } catch (err) {
