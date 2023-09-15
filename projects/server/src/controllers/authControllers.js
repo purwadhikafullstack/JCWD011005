@@ -1,10 +1,12 @@
 const bcrypt = require("bcrypt");
 const db = require("../models");
 const jwt = require('jsonwebtoken');
-const transporter = require('../helpers/transporter');
+// const transporter = require('../helpers/transporter');
 const path = require('path');
 const fs = require('fs').promises;
-const handlebars = require('handlebars');
+// const handlebars = require('handlebars');
+const { createUserWithEmailAndPassword } = require("firebase/auth");
+const auth = require("../firebase")
 const user = db.User;
 
 const AuthController = {
@@ -55,44 +57,60 @@ const AuthController = {
     },
     register: async (req, res) => {
         try {
-            const { username, email, password, phone } = req.body;
+            const { firstName, lastName, email, password, phone } = req.body;
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(password, salt);
-
-            await db.sequelize.transaction(async (t) => {
-                const result = await user.create({
-                    username,
-                    email,
-                    phone,
-                    password: hashedPassword,
-                    isVerified: false
-                }, { transaction: t });
-
-                let payload = { id: result.id, email: result.email };
-
-                const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: '1h' });
-
-                const redirect = `http://localhost:3000/verification/${token}`;
-
-                const data = await fs.readFile(
-                    path.resolve(__dirname, "../email/verificationEmail.html"), 'utf-8'
-                );
-
-                const tempCompile = handlebars.compile(data);
-                const tempResult = tempCompile({ username, redirect });
-
-                await transporter.sendMail({
-                    to: result.email,
-                    subject: "Verify Account",
-                    html: tempResult
+            
+            await createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    console.log(user);
+                    navigate("/login")
+                    // ...
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode, errorMessage);
+                    // ..
                 });
+            // await db.sequelize.transaction(async (t) => {
+            //     const result = await user.create({
+            //         firstName,
+            //         lastName,
+            //         email,
+            //         phone,
+            //         password: hashedPassword,
+            //         isVerified: false
+            //     }, { transaction: t });
 
-                return res.status(200).json({
-                    message: 'Registrasi akun anda telah berhasil dilakukan. Silahkan periksa email anda untuk melakukan verifikasi akun.',
-                    data: result,
-                    token
-                });
-            });
+
+                // let payload = { id: result.id, email: result.email };
+
+                // const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: '1h' });
+
+                // const redirect = `http://localhost:3000/verification/${token}`;
+
+                // const data = await fs.readFile(
+                //     path.resolve(__dirname, "../email/verificationEmail.html"), 'utf-8'
+                // );
+
+                // const tempCompile = handlebars.compile(data);
+                // const tempResult = tempCompile({ username, redirect });
+
+                // await transporter.sendMail({
+                //     to: result.email,
+                //     subject: "Verify Account",
+                //     html: tempResult
+                // });
+
+                // return res.status(200).json({
+                //     message: 'Registrasi akun anda telah berhasil dilakukan. Silahkan periksa email anda untuk melakukan verifikasi akun.',
+                //     data: result,
+                //     token
+                // });
+            // });
         } catch (err) {
             return res.status(503).json({
                 message: 'Mohon maaf, sedang ada pemeliharaan layanan saat ini. Silakan coba lagi nanti.',
