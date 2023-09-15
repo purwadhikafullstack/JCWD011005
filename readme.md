@@ -50,6 +50,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 ### Server / Back End
 • Preparation:\
 &emsp;BE-CONF = config.js
+&emsp;BE-SQZR = .sequelizerc
 
 • Migrations:\
 &emsp;BE-LMMI = Login Method table migration\
