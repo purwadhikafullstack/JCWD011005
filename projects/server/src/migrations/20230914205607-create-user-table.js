@@ -46,13 +46,23 @@ module.exports = {
       image_id_card: {
         type: Sequelize.STRING
       },
+      otp: {
+        type: Sequelize.INTEGER
+      },
+      otp_sent_a_day: {
+        defaultValue: 0,
+        type: Sequelize.INTEGER
+      },
+      is_otp_expired: {
+        type: Sequelize.BOOLEAN
+      },
       is_verified: {
         allowNull: false,
-        defaultValue: 0,
+        defaultValue: false,
         type: Sequelize.BOOLEAN
       }
     }, {
-      createdAt: true,
+      createdAt: false,
       timestamps: false,
       updatedAt: false
     });
