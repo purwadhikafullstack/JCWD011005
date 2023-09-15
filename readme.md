@@ -79,8 +79,8 @@ npm run server "sequelize-cli migration:generate --name create-login_method-tabl
 npm run server "sequelize-cli migration:generate --name create-role-table"
 
 2. Execute create table from migration file:
-npx sequelize-cli db:migrate
-npx sequelize db:migrate
+npm run server sequelize-cli db:migrate
+npm run server sequelize db:migrate
 
 
 ## Available Scripts
