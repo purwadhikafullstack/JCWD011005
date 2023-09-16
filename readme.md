@@ -69,7 +69,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;BE-AUCO = Auth Controllers
 
 • Models:\
-&emsp;BE-MODL = index.js of Model
+&emsp;BE-MODL = index.js of Model\
+&emsp;BE-USMO = User Model
 
 • Firebase:\
 &emsp;BE-FIRE = firebase.js
