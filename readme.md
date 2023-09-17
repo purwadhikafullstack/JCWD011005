@@ -30,9 +30,10 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 4. npm install -g yarn
 5. npm run server sequelize-cli init
 6. npm run install:server bcrypt
-7. npm run install:server jsonwebtoken
-8. npm run install:server nodemailer
-9. npm run install:server firebase
+7. npm run install:server handlebars
+8. npm run install:server jsonwebtoken
+9. npm run install:server nodemailer
+10. npm run install:server firebase
 
 ## Version Code:
 ### Client / Front End
