@@ -70,6 +70,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;BE-CONT = index.js of Controllers\
 &emsp;BE-AUCO = Auth Controllers
 
+• Email Content:\
+
 • Models:\
 &emsp;BE-MODL = index.js of Model\
 &emsp;BE-USMO = User Model
