@@ -6,8 +6,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • git clone https://github.com/purwadhikafullstack/JCWD011005.git \
 • git checkout -b 'FP-4'\
 • npm install\
-• [Installed Dependencies]
-• [client/src/index.js] import { ChakraProvider } from '@chakra-ui/react';
+• [Installed Dependencies]\
+• [client/src/index.js] import { ChakraProvider } from '@chakra-ui/react';\
 • [client/src/index.js] <ChakraProvider>...</ChakraProvider>
 
 ## Installed Dependencies:
@@ -28,14 +28,14 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 ### Server / Back End
 1. npm run install:server --save-dev sequelize-cli\
 2. npm run install:server sequelize\
-3. npm run install:server mysql2
-4. npm install -g yarn
-5. npm run server sequelize-cli init
-6. npm run install:server bcrypt
-7. npm run install:server handlebars
-8. npm run install:server jsonwebtoken
-9. npm run install:server otp-generator
-10. npm run install:server nodemailer
+3. npm run install:server mysql2\
+4. npm install -g yarn\
+5. npm run server sequelize-cli init\
+6. npm run install:server bcrypt\
+7. npm run install:server handlebars\
+8. npm run install:server jsonwebtoken\
+9. npm run install:server otp-generator\
+10. npm run install:server nodemailer\
 11. npm run install:server firebase
 
 ## Version Code:
@@ -54,8 +54,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 ### Server / Back End
 • Preparation:\
-&emsp;BE-CONF = config.js
-&emsp;BE-SQZR = .sequelizerc
+&emsp;BE-CONF = config.js\
+&emsp;BE-SQZR = .sequelizerc\
 &emsp;BE-TRNS = Transporter
 
 • Migrations:\
@@ -86,12 +86,12 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 ## ORM: Sequelize
 1. Create migration file
-npm run server "sequelize-cli migration:generate --name create-user-table"
-npm run server "sequelize-cli migration:generate --name create-login_method-table"
+npm run server "sequelize-cli migration:generate --name create-user-table"\
+npm run server "sequelize-cli migration:generate --name create-login_method-table"\
 npm run server "sequelize-cli migration:generate --name create-role-table"
 
-2. Execute create table from migration file:
-npm run server sequelize-cli db:migrate
+2. Execute create table from migration file:\
+npm run server sequelize-cli db:migrate\
 npm run server sequelize db:migrate
 
 
