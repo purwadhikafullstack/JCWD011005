@@ -21,7 +21,9 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;• npm run install:client formik\
 &emsp;• npm run install:client yup\
 3. React Router DOM:\
-&emsp;• npm run install:client react-router-dom
+&emsp;• npm run install:client react-router-dom\
+4. React Icons:\
+&emsp;• npm run install:client react-icons
 
 ### Server / Back End
 1. npm run install:server --save-dev sequelize-cli\
