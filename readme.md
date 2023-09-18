@@ -69,6 +69,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 • Middlewares:\
 &emsp;BE-MIDL = index.js of Middlewares\
+&emsp;BE-DVMI = Database Verificator\
 &emsp;BE-IVMI = Input Validator
 
 • Controllers:\
