@@ -52,7 +52,6 @@ const lastNameValidator = (req, res, next) => {
     });
     try {
         if (last_name != false) {
-            console.log("true");
             schema.validateSync({
                 lastNameSchema: last_name
             });
