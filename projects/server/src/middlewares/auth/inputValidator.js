@@ -29,13 +29,13 @@ const emailValidator = (req, res, next) => {
 const firstNameValidator = (req, res, next) => {
     const { first_name } = req.body;
     let schema = Yup.object({
-        validationSchema: Yup.string()
+        firstNameSchema: Yup.string()
             .matches(/^[a-zA-Z]+$/, "Nama depan hanya huruf yang diperbolehkan!")
             .required("Nama depan tidak boleh kosong!"),
     });
     try {
         schema.validateSync({
-            validationSchema: first_name
+            firstNameSchema: first_name
         });
 
         return next();
