@@ -40,7 +40,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 ### Client / Front End
 • Preparation:\
 &emsp;DPNC = Dependencies\
-&emsp;READ = readme.md
+&emsp;READ = readme.md\
+&emsp;IGNR = .gitignore (JCWD011005)
 
 • Custom & Preset Components:\
 &emsp;FE-INPA = Input Password\
