@@ -7,13 +7,13 @@ import * as Yup from "yup";
 import InputPassword from '../../components/input/InputPassword';
 import ModalRegular from '../../components/modal/ModalRegular';
 import { TbAlertTriangle } from 'react-icons/tb';
-
+import { useNavigate } from 'react-router-dom';
 
 const UserRegisterPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
-  
+  const navigate = useNavigate();
 
   const [errorStatus, setErrorStatus] = useState("");
   const [errorStatusText, setErrorStatusText] = useState("");
@@ -59,7 +59,7 @@ const UserRegisterPage = () => {
         password: values.password,
         phone: values.phone,
       }).then(resp => {
-        // props.fetchData();
+        navigate('/user-register/emailSent');
       }).catch(err => {
         console.log(err.response);
         
