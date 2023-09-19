@@ -6,12 +6,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Reset Password</title>
+    <title>Kode OTP Verifikasi Akun</title>
   </head>
   <body>
-    <h1>Selamat datang di Pro-Rent, {{fullname}}</h1>
-    <p>Untuk dapat menggunakan akun anda, silahkan verifikasi akun terlebih dahulu melalui link berikut:</p>
+    <h1>Selamat datang di Pro-Rent, {{firstName}} {{lastName}}</h1>
+    <p>Untuk dapat menggunakan akun anda, silahkan verifikasi akun terlebih dahulu dengan mengisi kode OTP <b>{{otp}}</b> melalui link berikut:</p>
     {{redirect}}
-    Mohon diperhatikan, link tersebut akan kadaluarsa dalam 1 (satu) jam. Apabila token kadaluarsa, silahkan hubungi admin untuk petunjuk selanjutnya.
+    Mohon diperhatikan, kode OTP dan link tersebut akan kadaluarsa dalam 1 (satu) jam. Apabila telah kadaluarsa, lakukan permintaan ulang verifikasi akun anda.
   </body>
 </html>
