@@ -50,7 +50,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 &emsp;FE-INWE = Input With Error
 
 • Pages:\
-&emsp;FE-URPA = User Register Page
+&emsp;FE-URPA = User Register Page\
+&emsp;FE-VAPA = Verify Account Page
 
 ### Server / Back End
 • Preparation:\
