@@ -4,6 +4,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import UserRegisterPage from "./pages/guest/UserRegisterPage";
+import VerifyAccountPage from "./pages/guest/VerifyAccountPage";
 
 function App() {
   // const [message, setMessage] = useState("");
@@ -26,6 +27,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/user-register" element={<UserRegisterPage/> } />
+        <Route path="/verifyAccount" element={<VerifyAccountPage/> } />
       </Routes>
     </Router>
   );
