@@ -39,8 +39,8 @@ const UserRegisterPage = () => {
     }),
     onSubmit: async values => {
       await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/register`, {
-        firstName: values.firstName,
-        lastName: values.lastName,
+        first_name: values.firstName,
+        last_name: values.lastName,
         email: values.email,
         password: values.password,
         phone: values.phone,
