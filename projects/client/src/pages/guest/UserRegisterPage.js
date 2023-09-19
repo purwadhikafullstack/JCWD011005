@@ -75,6 +75,10 @@ const UserRegisterPage = () => {
   return (
     <BlankPage>
       <FormCard>
+        <Box display={"flex"} flexDirection="column" justifyContent={"center"} alignItems={"center"} marginBottom="5">
+          <TbUserPlus size={70}/>
+          <Text as="b" fontSize="2xl">Membuat Akun Baru</Text>
+        </Box>
         <form onSubmit={userRegisterSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.firstName} touched={userRegisterSchema.touched.firstName}>
             <Input type="text" name="firstName" placeholder='Nama Depan' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.firstName} onChange={userRegisterSchema.handleChange}/>
