@@ -8,6 +8,7 @@ import InputPassword from '../../components/input/InputPassword';
 import ModalRegular from '../../components/modal/ModalRegular';
 import { TbAlertTriangle } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
+import BlankPage from '../universal/BlankPage';
 
 const UserRegisterPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -71,7 +72,7 @@ const UserRegisterPage = () => {
     }
   });
   return (
-    <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"calc(100vh)"} width={"100%"} bgColor={"lightgrey"}>
+    <BlankPage>
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"} width="25%" bgColor={"white"} border={"black"} borderRadius={"15"} padding={"5"} boxShadow={"md"} >
         <form onSubmit={userRegisterSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.firstName} touched={userRegisterSchema.touched.firstName}>
@@ -99,7 +100,7 @@ const UserRegisterPage = () => {
           </Box>
         </ModalRegular>
       </Box>
-    </Box>
+    </BlankPage>
   )
 }
 
