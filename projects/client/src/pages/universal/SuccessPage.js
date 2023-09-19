@@ -1,5 +1,5 @@
 import React from 'react'
-import BlankPage from '../BlankPage'
+import BlankPage from './BlankPage'
 import FormCard from '../../components/card/FormCard'
 import { Box, Text } from '@chakra-ui/react'
 import { TbLockCheck, TbMailCheck } from 'react-icons/tb'
