@@ -1,14 +1,28 @@
-import { Box, Button, Input } from '@chakra-ui/react'
+import { Box, Button, Input, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import InputWithError from '../../components/input/InputWithError'
 import axios from 'axios';
 import { useFormik } from 'formik'
 import * as Yup from "yup";
 import InputPassword from '../../components/input/InputPassword';
+import ModalRegular from '../../components/modal/ModalRegular';
+import { TbAlertTriangle } from 'react-icons/tb';
+
 
 const UserRegisterPage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+  
+
+  const [errorStatus, setErrorStatus] = useState("");
+  const [errorStatusText, setErrorStatusText] = useState("");
+  const [errorData, setErrorData] = useState("");
+  
+  const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
+    <TbAlertTriangle size={70}/>
+    <Text as={"b"} fontSize="2xl">Kesalahan</Text>
+  </Box>;
 
   const userRegisterSchema = useFormik({
     initialValues: {
@@ -46,9 +60,13 @@ const UserRegisterPage = () => {
         phone: values.phone,
       }).then(resp => {
         // props.fetchData();
-      }).catch(error => {
-        console.log(error.response.data.error);
-        alert(error.response.data.message);
+      }).catch(err => {
+        console.log(err.response);
+        
+        setErrorStatus(err.response.status);
+        setErrorStatusText(err.response.statusText);
+        setErrorData(err.response.data);
+        onOpen();
       });
     }
   });
@@ -73,6 +91,13 @@ const UserRegisterPage = () => {
           </InputWithError>
           <Button type="submit" colorScheme={"green"} marginX="5">Mendaftar</Button>
         </form>
+        
+        <ModalRegular isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
+          <Box display="flex" flexDirection="column" justifyContent="center">
+            <Text as="b" fontSize="lg">{errorData}</Text>
+            <Text>({errorStatus} {errorStatusText})</Text>
+          </Box>
+        </ModalRegular>
       </Box>
     </Box>
   )
