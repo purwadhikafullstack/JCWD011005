@@ -6,9 +6,10 @@ import { useFormik } from 'formik'
 import * as Yup from "yup";
 import InputPassword from '../../components/input/InputPassword';
 import ModalRegular from '../../components/modal/ModalRegular';
-import { TbAlertTriangle } from 'react-icons/tb';
+import { TbAlertTriangle, TbUserPlus } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 import BlankPage from '../universal/BlankPage';
+import FormCard from '../../components/card/FormCard';
 
 const UserRegisterPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -73,7 +74,7 @@ const UserRegisterPage = () => {
   });
   return (
     <BlankPage>
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} width="25%" bgColor={"white"} border={"black"} borderRadius={"15"} padding={"5"} boxShadow={"md"} >
+      <FormCard>
         <form onSubmit={userRegisterSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.firstName} touched={userRegisterSchema.touched.firstName}>
             <Input type="text" name="firstName" placeholder='Nama Depan' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.firstName} onChange={userRegisterSchema.handleChange}/>
@@ -99,7 +100,7 @@ const UserRegisterPage = () => {
             <Text>({errorStatus} {errorStatusText})</Text>
           </Box>
         </ModalRegular>
-      </Box>
+      </FormCard>
     </BlankPage>
   )
 }
