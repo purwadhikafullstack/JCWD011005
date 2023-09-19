@@ -13,6 +13,7 @@ import FormCard from '../../components/card/FormCard';
 
 const UserRegisterPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isLoading, setIsLoading] = useState(false);
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const navigate = useNavigate();
@@ -54,6 +55,7 @@ const UserRegisterPage = () => {
         .required("Nomor ponsel tidak boleh kosong!")
     }),
     onSubmit: async values => {
+      setIsLoading(true);
       await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/register`, {
         first_name: values.firstName,
         last_name: values.lastName,
@@ -61,10 +63,11 @@ const UserRegisterPage = () => {
         password: values.password,
         phone: values.phone,
       }).then(resp => {
+        setIsLoading(false);
         navigate('/user-register/emailSent');
       }).catch(err => {
         console.log(err.response);
-        
+        setIsLoading(false);
         setErrorStatus(err.response.status);
         setErrorStatusText(err.response.statusText);
         setErrorData(err.response.data);
@@ -98,7 +101,7 @@ const UserRegisterPage = () => {
           <Button type="submit" colorScheme={"green"} marginX="5" marginTop="5">Mendaftar</Button>
         </form>
         
-        <ModalRegular isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
+        <ModalRegular isLoading={isLoading} isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
           <Box display="flex" flexDirection="column" justifyContent="center">
             <Text as="b" fontSize="lg">{errorData}</Text>
             <Text>({errorStatus} {errorStatusText})</Text>
