@@ -1,13 +1,5 @@
 const Yup = require("yup");
 
-// Yup.object({
-//     phone: Yup.string()
-//       .matches(/[0-9]/, "Nomor ponsel yang diperbolehkan hanya angka!")
-//       .min(10, "Nomor ponsel setidaknya minimal 10 digit!")
-//       .max(13, "Nomor ponsel maksimal 13 digit!")
-//       .required("Nomor ponsel tidak boleh kosong!")
-//   }),
-
 const emailValidator = (req, res, next) => {
     const { email } = req.body;
     let schema = Yup.object({
