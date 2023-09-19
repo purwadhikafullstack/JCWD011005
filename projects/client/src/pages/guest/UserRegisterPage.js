@@ -70,7 +70,7 @@ const UserRegisterPage = () => {
         setIsLoading(false);
         setErrorStatus(err.response.status);
         setErrorStatusText(err.response.statusText);
-        setErrorData(err.response.data);
+        (typeof err.response.data === 'string')? setErrorData(err.response.data) : setErrorData(err.response.data.message);
         onOpen();
       });
     }
