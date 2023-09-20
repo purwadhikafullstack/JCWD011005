@@ -36,6 +36,7 @@ const VerifyAccountPage = () => {
         <Box display={"flex"} flexDirection="column" justifyContent={"center"} alignItems={"center"} marginBottom="5">
           <TbUserCheck size={70}/>
           <Text as="b" fontSize="2xl">Verifikasi Akun</Text>
+          <Text>Untuk melakukan verifikasi akun anda, masukkan kode OTP yang kami kirimkan melalui email anda</Text>
         </Box>
         <form onSubmit={verifyAccountSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
