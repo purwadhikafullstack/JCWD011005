@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import * as Yup from "yup";
 import InputWithError from '../../components/input/InputWithError';
 import BlankPage from '../universal/BlankPage';
+import FormCard from '../../components/card/FormCard';
 
 const VerifyAccountPage = () => {
   const verifyAccountSchema = useFormik({
@@ -30,14 +31,14 @@ const VerifyAccountPage = () => {
   });
   return (
     <BlankPage>
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} width="25%" bgColor={"white"} border={"black"} borderRadius={"15"} padding={"5"} boxShadow={"md"} >
+      <FormCard>
         <form onSubmit={verifyAccountSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
             <Input type="text" name="otp" placeholder='Kode OTP' bgColor="white" borderColor={"grey"} color={"black"} value={verifyAccountSchema.values.phone} onChange={verifyAccountSchema.handleChange}/>
           </InputWithError>
           <Button type="submit" colorScheme={"green"} marginX="5">Verifikasi</Button>
         </form>
-      </Box>
+      </FormCard>
     </BlankPage>
   )
 }
