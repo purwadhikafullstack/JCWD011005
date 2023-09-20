@@ -12,8 +12,6 @@ import ModalRegular from '../../components/modal/ModalRegular';
 
 const VerifyAccountPage = () => {
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get('token'));
-  
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoading, setIsLoading] = useState(false);
@@ -39,6 +37,10 @@ const VerifyAccountPage = () => {
     onSubmit: async values => {
       setIsLoading(true);
       await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/verifyAccount`, {
+        headers: {
+          'Token': searchParams.get('token')
+        }
+      },{
         otp: values.otp,
       }).then(resp => {
         setIsLoading(false);
