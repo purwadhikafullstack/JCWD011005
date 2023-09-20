@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import InputWithError from '../../components/input/InputWithError';
 import BlankPage from '../universal/BlankPage';
 import FormCard from '../../components/card/FormCard';
-import { Tb123 } from 'react-icons/tb';
+import { TbUserCheck } from 'react-icons/tb';
 
 const VerifyAccountPage = () => {
   const verifyAccountSchema = useFormik({
@@ -34,8 +34,8 @@ const VerifyAccountPage = () => {
     <BlankPage>
       <FormCard>
         <Box display={"flex"} flexDirection="column" justifyContent={"center"} alignItems={"center"} marginBottom="5">
-          <Tb123 size={70}/>
-          <Text as="b" fontSize="2xl">Membuat Akun Baru</Text>
+          <TbUserCheck size={70}/>
+          <Text as="b" fontSize="2xl">Verifikasi Akun</Text>
         </Box>
         <form onSubmit={verifyAccountSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
