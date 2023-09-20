@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useFormik } from 'formik'
 import * as Yup from "yup";
 import InputWithError from '../../components/input/InputWithError';
+import BlankPage from '../universal/BlankPage';
 
 const VerifyAccountPage = () => {
   const verifyAccountSchema = useFormik({
@@ -28,7 +29,7 @@ const VerifyAccountPage = () => {
     }
   });
   return (
-    <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"calc(100vh)"} width={"100%"} bgColor={"lightgrey"}>
+    <BlankPage>
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"} width="25%" bgColor={"white"} border={"black"} borderRadius={"15"} padding={"5"} boxShadow={"md"} >
         <form onSubmit={verifyAccountSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
@@ -37,7 +38,7 @@ const VerifyAccountPage = () => {
           <Button type="submit" colorScheme={"green"} marginX="5">Verifikasi</Button>
         </form>
       </Box>
-    </Box>
+    </BlankPage>
   )
 }
 
