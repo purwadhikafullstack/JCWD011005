@@ -7,9 +7,12 @@ import InputWithError from '../../components/input/InputWithError';
 import BlankPage from '../universal/BlankPage';
 import FormCard from '../../components/card/FormCard';
 import { TbUserCheck } from 'react-icons/tb';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const VerifyAccountPage = () => {
+  const [searchParams] = useSearchParams();
+  console.log(searchParams.get('token'));
+
   const navigate = useNavigate();
   const verifyAccountSchema = useFormik({
     initialValues: {
