@@ -7,8 +7,10 @@ import InputWithError from '../../components/input/InputWithError';
 import BlankPage from '../universal/BlankPage';
 import FormCard from '../../components/card/FormCard';
 import { TbUserCheck } from 'react-icons/tb';
+import { useNavigate } from 'react-router-dom';
 
 const VerifyAccountPage = () => {
+  const navigate = useNavigate();
   const verifyAccountSchema = useFormik({
     initialValues: {
       otp: "",
@@ -23,7 +25,7 @@ const VerifyAccountPage = () => {
       await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/verifyAccount`, {
         otp: values.otp,
       }).then(resp => {
-        // props.fetchData();
+        navigate('/user/verified');
       }).catch(error => {
         console.log(error.response.data.error);
         alert(error.response.data.message);
