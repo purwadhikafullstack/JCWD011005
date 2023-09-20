@@ -1,4 +1,4 @@
-import { Box, Button, Input } from '@chakra-ui/react'
+import { Box, Button, Input, Text } from '@chakra-ui/react'
 import React from 'react'
 import axios from 'axios';
 import { useFormik } from 'formik'
@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import InputWithError from '../../components/input/InputWithError';
 import BlankPage from '../universal/BlankPage';
 import FormCard from '../../components/card/FormCard';
+import { Tb123 } from 'react-icons/tb';
 
 const VerifyAccountPage = () => {
   const verifyAccountSchema = useFormik({
@@ -32,6 +33,10 @@ const VerifyAccountPage = () => {
   return (
     <BlankPage>
       <FormCard>
+        <Box display={"flex"} flexDirection="column" justifyContent={"center"} alignItems={"center"} marginBottom="5">
+          <Tb123 size={70}/>
+          <Text as="b" fontSize="2xl">Membuat Akun Baru</Text>
+        </Box>
         <form onSubmit={verifyAccountSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
             <Input type="text" name="otp" placeholder='Kode OTP' bgColor="white" borderColor={"grey"} color={"black"} value={verifyAccountSchema.values.phone} onChange={verifyAccountSchema.handleChange}/>
