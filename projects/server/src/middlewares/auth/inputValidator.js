@@ -55,6 +55,25 @@ const lastNameValidator = (req, res, next) => {
     }
 }
 
+const otpValidator = (req, res, next) => {
+    const { otp } = req.body;
+    let schema = Yup.object({
+        otp: Yup.string()
+            .matches(/[0-9]/, "Kode OTP yang diperbolehkan hanya angka!")
+            .max(6, "Kode OTP maksimal 6 digit!")
+            .required("Kode OTP tidak boleh kosong!")
+    });
+    try {
+        schema.validateSync({
+            otp: otp
+        });
+
+        return next();
+    } catch (err) {
+        return res.status(422).send(err.message);
+    }
+}
+
 const passwordValidator = (req, res, next) => {
     const { password } = req.body;
     let schema = Yup.object({
@@ -94,4 +113,4 @@ const phoneValidator = (req, res, next) => {
     }
 }
 
-module.exports = { firstNameValidator, lastNameValidator, emailValidator, passwordValidator, phoneValidator };
+module.exports = { firstNameValidator, lastNameValidator, emailValidator, otpValidator, passwordValidator, phoneValidator };
