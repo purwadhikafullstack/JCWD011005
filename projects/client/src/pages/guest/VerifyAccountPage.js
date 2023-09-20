@@ -1,4 +1,4 @@
-import { Box, Button, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Input, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useFormik } from 'formik'
@@ -6,15 +6,25 @@ import * as Yup from "yup";
 import InputWithError from '../../components/input/InputWithError';
 import BlankPage from '../universal/BlankPage';
 import FormCard from '../../components/card/FormCard';
-import { TbUserCheck } from 'react-icons/tb';
+import { TbAlertTriangle, TbUserCheck } from 'react-icons/tb';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import ModalRegular from '../../components/modal/ModalRegular';
 
 const VerifyAccountPage = () => {
   const [searchParams] = useSearchParams();
   console.log(searchParams.get('token'));
-
+  
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoading, setIsLoading] = useState(false);
+  const [errorStatus, setErrorStatus] = useState("");
+  const [errorStatusText, setErrorStatusText] = useState("");
+  const [errorData, setErrorData] = useState("");
+  
+  const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
+    <TbAlertTriangle size={70}/>
+    <Text as={"b"} fontSize="2xl">Kesalahan</Text>
+  </Box>;
 
   const verifyAccountSchema = useFormik({
     initialValues: {
@@ -33,10 +43,12 @@ const VerifyAccountPage = () => {
       }).then(resp => {
         setIsLoading(false);
         navigate('/user/verified');
-      }).catch(error => {
+      }).catch(err => {
         setIsLoading(false);
-        console.log(error.response.data.error);
-        alert(error.response.data.message);
+        setErrorStatus(err.response.status);
+        setErrorStatusText(err.response.statusText);
+        (typeof err.response.data === 'string')? setErrorData(err.response.data) : setErrorData(err.response.data.message);
+        onOpen();
       });
     }
   });
@@ -54,6 +66,13 @@ const VerifyAccountPage = () => {
           </InputWithError>
           <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Verifikasi</Button>
         </form>
+
+        <ModalRegular isLoading={isLoading} isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
+          <Box display="flex" flexDirection="column" justifyContent="center">
+            <Text as="b" fontSize="lg">{errorData}</Text>
+            <Text>({errorStatus} {errorStatusText})</Text>
+          </Box>
+        </ModalRegular>
       </FormCard>
     </BlankPage>
   )
