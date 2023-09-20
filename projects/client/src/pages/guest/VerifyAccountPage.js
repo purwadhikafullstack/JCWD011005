@@ -1,5 +1,5 @@
 import { Box, Button, Input, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import { useFormik } from 'formik'
 import * as Yup from "yup";
@@ -14,6 +14,8 @@ const VerifyAccountPage = () => {
   console.log(searchParams.get('token'));
 
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
   const verifyAccountSchema = useFormik({
     initialValues: {
       otp: "",
@@ -25,11 +27,14 @@ const VerifyAccountPage = () => {
         .required("Kode OTP tidak boleh kosong!")
     }),
     onSubmit: async values => {
+      setIsLoading(true);
       await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/verifyAccount`, {
         otp: values.otp,
       }).then(resp => {
+        setIsLoading(false);
         navigate('/user/verified');
       }).catch(error => {
+        setIsLoading(false);
         console.log(error.response.data.error);
         alert(error.response.data.message);
       });
@@ -47,7 +52,7 @@ const VerifyAccountPage = () => {
           <InputWithError margin={"0"} padding={"1"} errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
             <Input type="text" name="otp" placeholder='Kode OTP' bgColor="white" borderColor={"grey"} color={"black"} value={verifyAccountSchema.values.phone} onChange={verifyAccountSchema.handleChange}/>
           </InputWithError>
-          <Button type="submit" colorScheme={"green"} marginX="5" marginTop="5">Verifikasi</Button>
+          <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Verifikasi</Button>
         </form>
       </FormCard>
     </BlankPage>
