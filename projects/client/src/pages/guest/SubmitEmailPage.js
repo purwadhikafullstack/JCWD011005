@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import BlankPage from './BlankPage'
-import InputWithError from '../components/input/InputWithError'
 import { useFormik } from 'formik';
 import * as Yup from "yup";
 import axios from 'axios';
 import { Box, Button, Input, Text, useDisclosure } from '@chakra-ui/react';
 import { TbAlertTriangle, TbLockQuestion } from 'react-icons/tb'
+import { useNavigate } from 'react-router-dom';
+import BlankPage from './BlankPage'
 import FormCard from '../components/card/FormCard';
+import InputWithError from '../components/input/InputWithError'
 import ModalRegular from '../../components/modal/ModalRegular';
 
 const SubmitEmailPage = () => {
@@ -15,6 +16,7 @@ const SubmitEmailPage = () => {
   const [errorData, setErrorData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
 
   const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
     <TbAlertTriangle size={70}/>
@@ -36,6 +38,7 @@ const SubmitEmailPage = () => {
         email: values.email,
       }).then(resp => {
         setIsLoading(false);
+        navigate('/user-register/emailSent');
       }).catch(err => {
         setIsLoading(false);
         setErrorStatus(err.response.status);
