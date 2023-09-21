@@ -9,7 +9,7 @@ import { TbLockQuestion } from 'react-icons/tb'
 import FormCard from '../components/card/FormCard';
 
 const SubmitEmailPage = () => {
-  const forgotPasswordSchema = useFormik({
+  const submitEmailSchema = useFormik({
     initialValues: {
       email: "",
     },
@@ -40,9 +40,9 @@ const SubmitEmailPage = () => {
         </Box>
         <Text as="b" fontSize="2xl">Kehilangan kata sandi?</Text>
         <Text>Kami akan membantu dalam memulihkan akun anda</Text>
-        <form onSubmit={forgotPasswordSchema.handleSubmit}>
-          <InputWithError errors={forgotPasswordSchema.errors.email} touched={forgotPasswordSchema.touched.email}>
-            <Input type="text" name="email" placeholder='Email' bgColor="white" borderColor={"grey"} color={"black"} value={forgotPasswordSchema.values.email} onChange={forgotPasswordSchema.handleChange}/>
+        <form onSubmit={submitEmailSchema.handleSubmit}>
+          <InputWithError errors={submitEmailSchema.errors.email} touched={submitEmailSchema.touched.email}>
+            <Input type="text" name="email" placeholder='Email' bgColor="white" borderColor={"grey"} color={"black"} value={submitEmailSchema.values.email} onChange={submitEmailSchema.handleChange}/>
           </InputWithError>
           <Box display={"flex"}>
             <Button type="submit" colorScheme={"green"} flex={1} marginX="5">Kirim</Button>
