@@ -36,7 +36,7 @@ const VerifyAccountPage = () => {
     }),
     onSubmit: async values => {
       setIsLoading(true);
-      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/verifyAccount`, {
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/verify`, {
         headers: {
           'Token': searchParams.get('token')
         }
