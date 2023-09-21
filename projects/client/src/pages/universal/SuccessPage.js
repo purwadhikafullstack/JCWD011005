@@ -11,16 +11,16 @@ const SuccessPage = (props) => {
     if (props.purpose === "email") {
         title = "Permintaan sudah kami terima";
         description = "Silahkan periksa email anda untuk instruksi berikutnya";
-        icon = <TbMailCheck size={70}/>;
+        icon = <TbMailCheck size="70"/>;
     } else if (props.purpose === "reset") {
         title = "Kata sandi telah diubah";
         description = "Silahkan login kembali untuk masuk ke dalam dashboard";
-        icon = <TbLockCheck size={70}/>;
+        icon = <TbLockCheck size="70"/>;
     }
     return (
         <BlankPage>
             <FormCard>
-                <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+                <Box display="flex" justifyContent="center" alignItems="center">
                     {icon}
                 </Box>
                 <Text as="b" fontSize="2xl">{title}</Text>
