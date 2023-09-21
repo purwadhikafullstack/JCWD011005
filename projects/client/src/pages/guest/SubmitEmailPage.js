@@ -36,7 +36,6 @@ const SubmitEmailPage = () => {
         email: values.email,
       }).then(resp => {
         setIsLoading(false);
-        alert(`[resp.data]: ${resp.data}`);
       }).catch(err => {
         setIsLoading(false);
         setErrorStatus(err.response.status);
@@ -44,7 +43,6 @@ const SubmitEmailPage = () => {
         (typeof err.response.data === 'string')? setErrorData(err.response.data) : setErrorData(err.response.data.message);
         onOpen();
       });
-      alert("Done");
     }
   });
   return (
