@@ -33,8 +33,8 @@ const SubmitEmailPage = (props) => {
     },
     validationSchema: Yup.object({
       email: Yup.string()
+        .email("Format penulisan email tidak valid!")
         .required("Email tidak boleh kosong!")
-        .email("Format email tidak benar!")
     }),
     onSubmit: async values => {
       setIsLoading(true);
