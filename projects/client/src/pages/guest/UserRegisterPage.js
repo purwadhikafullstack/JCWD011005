@@ -64,7 +64,7 @@ const UserRegisterPage = () => {
         phone: values.phone,
       }).then(resp => {
         setIsLoading(false);
-        navigate('/user-register/emailSent');
+        navigate('/user/register/emailSent');
       }).catch(err => {
         console.log(err.response);
         setIsLoading(false);
