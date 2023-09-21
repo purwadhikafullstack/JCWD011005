@@ -42,7 +42,7 @@ const SubmitEmailPage = (props) => {
         email: values.email,
       }).then(resp => {
         setIsLoading(false);
-        navigate('/user-register/emailSent');
+        navigate('/user/register/emailSent');
       }).catch(err => {
         setIsLoading(false);
         setErrorStatus(err.response.status);
