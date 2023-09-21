@@ -9,6 +9,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/user/forgotPassword" element={<SubmitEmailPage purpose="password"/> } />
         <Route path="/user/register" element={<UserRegisterPage/> } />
         <Route path="/user/register/emailSent" element={<SuccessPage purpose="email"/> } />
         <Route path="/user/resendOtp" element={<SubmitEmailPage purpose="otp"/> } />
