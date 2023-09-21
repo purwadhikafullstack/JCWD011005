@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BlankPage from './BlankPage'
 import InputWithError from '../components/input/InputWithError'
 import { useFormik } from 'formik';
@@ -9,6 +9,7 @@ import { TbLockQuestion } from 'react-icons/tb'
 import FormCard from '../components/card/FormCard';
 
 const SubmitEmailPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const submitEmailSchema = useFormik({
     initialValues: {
       email: "",
@@ -22,11 +23,14 @@ const SubmitEmailPage = () => {
       // alert(JSON.stringify(values, null, 2));
 
       // const axios = require("axios");
+      setIsLoading(true);
       await axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/login", {
         email: values.email,
       }).then(resp => {
+        setIsLoading(false);
         alert(`[resp.data]: ${resp.data}`);
       }).catch(error => {
+        setIsLoading(false);
         alert(`[error.response.data.err] ${error.response.data.err}`);
       });
       alert("Done");
@@ -45,7 +49,7 @@ const SubmitEmailPage = () => {
             <Input type="text" name="email" placeholder='Email' bgColor="white" borderColor={"grey"} color={"black"} value={submitEmailSchema.values.email} onChange={submitEmailSchema.handleChange}/>
           </InputWithError>
           <Box display={"flex"}>
-            <Button type="submit" colorScheme={"green"} flex={1} marginX="5">Kirim</Button>
+            <Button type="submit" isLoading={isLoading} colorScheme={"green"} flex={1} marginX="5">Kirim</Button>
           </Box>
         </form>
       </FormCard>
