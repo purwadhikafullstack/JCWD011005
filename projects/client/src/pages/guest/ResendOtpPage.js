@@ -8,7 +8,7 @@ import { Box, Button, Input, Text } from '@chakra-ui/react';
 import { TbLockQuestion } from 'react-icons/tb'
 import FormCard from '../components/card/FormCard';
 
-const ResendOtpPage = () => {
+const SubmitEmailPage = () => {
     const forgotPasswordSchema = useFormik({
         initialValues: {
             email: "",
@@ -53,4 +53,4 @@ const ResendOtpPage = () => {
     )
 }
 
-export default ResendOtpPage
+export default SubmitEmailPage
