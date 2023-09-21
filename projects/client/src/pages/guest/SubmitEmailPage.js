@@ -5,9 +5,9 @@ import axios from 'axios';
 import { Box, Button, Input, Text, useDisclosure } from '@chakra-ui/react';
 import { TbAlertTriangle, TbLockQuestion } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom';
-import BlankPage from './BlankPage'
-import FormCard from '../components/card/FormCard';
-import InputWithError from '../components/input/InputWithError'
+import BlankPage from '../universal/BlankPage';
+import FormCard from '../../components/card/FormCard';
+import InputWithError from '../../components/input/InputWithError'
 import ModalRegular from '../../components/modal/ModalRegular';
 
 const SubmitEmailPage = (props) => {
