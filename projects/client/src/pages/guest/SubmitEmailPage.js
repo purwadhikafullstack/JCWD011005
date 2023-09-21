@@ -18,8 +18,9 @@ const SubmitEmailPage = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
-  const formTitle = (props.purpose === "email")? "Kehilangan kata sandi?" : "Kode OTP kadaluarsa?";
-  const formDescription = (props.purpose === "email")? "Kami akan membantu dalam memulihkan akun anda" : "Kami akan membantu dalam verifikasi akun anda";
+  const destination = (props.purpose === "password")? "resetPassword" : "resendOtp";
+  const formTitle = (props.purpose === "password")? "Kehilangan kata sandi?" : "Kode OTP kadaluarsa?";
+  const formDescription = (props.purpose === "password")? "Kami akan membantu dalam memulihkan akun anda" : "Kami akan membantu dalam verifikasi akun anda";
 
   const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
     <TbAlertTriangle size={70}/>
@@ -37,7 +38,7 @@ const SubmitEmailPage = (props) => {
     }),
     onSubmit: async values => {
       setIsLoading(true);
-      await axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/login", {
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/${destination}`, {
         email: values.email,
       }).then(resp => {
         setIsLoading(false);
