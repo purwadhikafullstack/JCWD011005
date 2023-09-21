@@ -10,13 +10,16 @@ import FormCard from '../components/card/FormCard';
 import InputWithError from '../components/input/InputWithError'
 import ModalRegular from '../../components/modal/ModalRegular';
 
-const SubmitEmailPage = () => {
+const SubmitEmailPage = (props) => {
   const [errorStatus, setErrorStatus] = useState("");
   const [errorStatusText, setErrorStatusText] = useState("");
   const [errorData, setErrorData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
+
+  const formTitle = (props.purpose === "email")? "Kehilangan kata sandi?" : "Kode OTP kadaluarsa?";
+  const formDescription = (props.purpose === "email")? "Kami akan membantu dalam memulihkan akun anda" : "Kami akan membantu dalam verifikasi akun anda";
 
   const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
     <TbAlertTriangle size={70}/>
@@ -54,8 +57,8 @@ const SubmitEmailPage = () => {
         <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
           <TbLockQuestion size={70}/>
         </Box>
-        <Text as="b" fontSize="2xl">Kehilangan kata sandi?</Text>
-        <Text>Kami akan membantu dalam memulihkan akun anda</Text>
+        <Text as="b" fontSize="2xl">${formTitle}</Text>
+        <Text>${formDescription}</Text>
         <form onSubmit={submitEmailSchema.handleSubmit}>
           <InputWithError errors={submitEmailSchema.errors.email} touched={submitEmailSchema.touched.email}>
             <Input type="text" name="email" placeholder='Email' bgColor="white" borderColor={"grey"} color={"black"} value={submitEmailSchema.values.email} onChange={submitEmailSchema.handleChange}/>
