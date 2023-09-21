@@ -52,6 +52,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 • Pages:\
 &emsp;FE-BLPA = Blank Page\
+&emsp;FE-SEPA = Submit Email Page\
 &emsp;FE-SUPA = Success Page\
 &emsp;FE-URPA = User Register Page\
 &emsp;FE-VAPA = Verify Account Page
