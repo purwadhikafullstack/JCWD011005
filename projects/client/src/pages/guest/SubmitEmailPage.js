@@ -20,9 +20,6 @@ const SubmitEmailPage = () => {
         .email("Format email tidak benar!")
     }),
     onSubmit: async values => {
-      // alert(JSON.stringify(values, null, 2));
-
-      // const axios = require("axios");
       setIsLoading(true);
       await axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/login", {
         email: values.email,
