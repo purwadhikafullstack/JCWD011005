@@ -98,10 +98,10 @@ const UserRegisterPage = () => {
           <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.phone} touched={userRegisterSchema.touched.phone}>
             <Input type="text" name="phone" placeholder='Nomor Telepon' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.phone} onChange={userRegisterSchema.handleChange}/>
           </InputWithError>
-          <Button type="submit" colorScheme={"green"} marginX="5" marginTop="5">Mendaftar</Button>
+          <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Mendaftar</Button>
         </form>
         
-        <ModalRegular isLoading={isLoading} isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
+        <ModalRegular isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
           <Box display="flex" flexDirection="column" justifyContent="center">
             <Text as="b" fontSize="lg">{errorData}</Text>
             <Text>({errorStatus} {errorStatusText})</Text>
