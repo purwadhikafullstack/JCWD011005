@@ -37,11 +37,11 @@ const VerifyAccountPage = () => {
     onSubmit: async values => {
       setIsLoading(true);
       await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/verify`, {
+        otp: values.otp
+      }, {
         headers: {
           'Token': token
-        }
-      },{
-        otp: values.otp,
+        },
       }).then(resp => {
         setIsLoading(false);
         navigate('/user/verified');
