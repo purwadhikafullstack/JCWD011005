@@ -64,7 +64,7 @@ const VerifyAccountPage = () => {
         </Box>
         <form onSubmit={verifyAccountSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
-          <Input type="text" name="otp" placeholder='Kode OTP' bgColor="white" borderColor={"grey"} color={"black"} value={verifyAccountSchema.values.phone} onChange={verifyAccountSchema.handleChange}/>
+            <Input type="text" name="otp" placeholder='Kode OTP' bgColor="white" borderColor={"grey"} color={"black"} value={verifyAccountSchema.values.otp} onChange={verifyAccountSchema.handleChange}/>
           </InputWithError>
           <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Verifikasi</Button>
         </form>
