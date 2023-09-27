@@ -7,17 +7,17 @@ import InputWithError from '../../components/input/InputWithError';
 import BlankPage from '../universal/BlankPage';
 import FormCard from '../../components/card/FormCard';
 import { TbAlertTriangle, TbUserCheck } from 'react-icons/tb';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ModalRegular from '../../components/modal/ModalRegular';
 
 const VerifyAccountPage = () => {
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoading, setIsLoading] = useState(false);
   const [errorStatus, setErrorStatus] = useState("");
   const [errorStatusText, setErrorStatusText] = useState("");
   const [errorData, setErrorData] = useState("");
+  const {token} = useParams();
   
   const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
     <TbAlertTriangle size={70}/>
@@ -38,7 +38,7 @@ const VerifyAccountPage = () => {
       setIsLoading(true);
       await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/verify`, {
         headers: {
-          'Token': searchParams.get('token')
+          'Token': token
         }
       },{
         otp: values.otp,
@@ -64,7 +64,7 @@ const VerifyAccountPage = () => {
         </Box>
         <form onSubmit={verifyAccountSchema.handleSubmit}>
           <InputWithError margin={"0"} padding={"1"} errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
-            <Input type="text" name="otp" placeholder='Kode OTP' bgColor="white" borderColor={"grey"} color={"black"} value={verifyAccountSchema.values.phone} onChange={verifyAccountSchema.handleChange}/>
+          <Input type="text" name="otp" placeholder='Kode OTP' bgColor="white" borderColor={"grey"} color={"black"} value={verifyAccountSchema.values.phone} onChange={verifyAccountSchema.handleChange}/>
           </InputWithError>
           <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Verifikasi</Button>
         </form>
