@@ -55,16 +55,16 @@ const SubmitEmailPage = (props) => {
   return (
     <BlankPage>
       <FormCard>
-        <Box display={"flex"} flexDirection="column" justifyContent={"center"} alignItems={"center"} marginBottom="5">
-          <TbLockQuestion size={70}/>
+        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" marginBottom="5">
+          <TbLockQuestion size="70"/>
           <Text as="b" fontSize="2xl">{formTitle}</Text>
           <Text>{formDescription}</Text>
         </Box>
         <form onSubmit={submitEmailSchema.handleSubmit}>
-          <InputWithError margin={"0"} padding={"1"} errors={submitEmailSchema.errors.email} touched={submitEmailSchema.touched.email}>
-            <Input type="text" name="email" placeholder='Email' bgColor="white" borderColor={"grey"} color={"black"} value={submitEmailSchema.values.email} onChange={submitEmailSchema.handleChange}/>
+          <InputWithError margin="0" padding="1" errors={submitEmailSchema.errors.email} touched={submitEmailSchema.touched.email}>
+            <Input type="text" name="email" placeholder='Email' bgColor="white" borderColor="grey" color="black" value={submitEmailSchema.values.email} onChange={submitEmailSchema.handleChange}/>
           </InputWithError>
-          <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginTop="5" marginX="5">Kirim</Button>
+          <Button type="submit" colorScheme="green" isLoading={isLoading} marginTop="5" marginX="5">Kirim</Button>
         </form>
         <ModalRegular isLoading={isLoading} isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
           <Box display="flex" flexDirection="column" justifyContent="center">
