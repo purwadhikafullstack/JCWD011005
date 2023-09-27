@@ -55,18 +55,16 @@ const SubmitEmailPage = (props) => {
   return (
     <BlankPage>
       <FormCard>
-        <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
           <TbLockQuestion size={70}/>
         </Box>
         <Text as="b" fontSize="2xl">${formTitle}</Text>
         <Text>${formDescription}</Text>
         <form onSubmit={submitEmailSchema.handleSubmit}>
-          <InputWithError errors={submitEmailSchema.errors.email} touched={submitEmailSchema.touched.email}>
+        <InputWithError errors={submitEmailSchema.errors.email} touched={submitEmailSchema.touched.email}>
             <Input type="text" name="email" placeholder='Email' bgColor="white" borderColor={"grey"} color={"black"} value={submitEmailSchema.values.email} onChange={submitEmailSchema.handleChange}/>
           </InputWithError>
-          <Box display={"flex"}>
-            <Button type="submit" isLoading={isLoading} colorScheme={"green"} flex={1} marginX="5">Kirim</Button>
-          </Box>
+          <Button type="submit" isLoading={isLoading} colorScheme={"green"} marginX="5">Kirim</Button>
         </form>
 
         <ModalRegular isLoading={isLoading} isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
