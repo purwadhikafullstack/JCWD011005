@@ -69,7 +69,7 @@ const VerifyAccountPage = () => {
           <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Verifikasi</Button>
         </form>
         
-        <ModalRegular isLoading={isLoading} isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
+        <ModalRegular isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
           <Box display="flex" flexDirection="column" justifyContent="center">
             <Text as="b" fontSize="lg">{errorData}</Text>
             <Text>({errorStatus} {errorStatusText})</Text>
