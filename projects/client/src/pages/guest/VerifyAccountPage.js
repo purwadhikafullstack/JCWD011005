@@ -36,7 +36,7 @@ const VerifyAccountPage = () => {
     }),
     onSubmit: async values => {
       setIsLoading(true);
-      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/verify`, {
+      await axios.patch(`${process.env.REACT_APP_API_BASE_URL}/user/verify`, {
         otp: values.otp
       }, {
         headers: {
@@ -68,7 +68,7 @@ const VerifyAccountPage = () => {
           </InputWithError>
           <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Verifikasi</Button>
         </form>
-
+        
         <ModalRegular isLoading={isLoading} isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
           <Box display="flex" flexDirection="column" justifyContent="center">
             <Text as="b" fontSize="lg">{errorData}</Text>
