@@ -2,7 +2,7 @@ import React from 'react'
 import BlankPage from './BlankPage'
 import FormCard from '../../components/card/FormCard'
 import { Box, Button, Divider, Text } from '@chakra-ui/react'
-import { TbLockCheck, TbMailCheck } from 'react-icons/tb'
+import { TbLockCheck, TbMailCheck, TbUserCheck } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom'
 
 const SuccessPage = (props) => {
@@ -12,6 +12,10 @@ const SuccessPage = (props) => {
         title = "Permintaan sudah kami terima";
         description = "Silahkan periksa email anda untuk instruksi berikutnya";
         icon = <TbMailCheck size="70"/>;
+    } else if (props.purpose === "verified") {
+        title = "Akun anda berhasil diverifikasi";
+        description = "Sekarang anda bisa menggunakan fitur yang sebelumnya dibatasi";
+        icon = <TbUserCheck size="70"/>;
     } else if (props.purpose === "reset") {
         title = "Kata sandi telah diubah";
         description = "Silahkan login kembali untuk masuk ke dalam dashboard";
