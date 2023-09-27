@@ -13,7 +13,7 @@ function App() {
         <Route path="/user/register" element={<UserRegisterPage/> } />
         <Route path="/user/register/emailSent" element={<SuccessPage purpose="email"/> } />
         <Route path="/user/resendOtp" element={<SubmitEmailPage purpose="otp"/> } />
-        <Route path="/user/verify" element={<VerifyAccountPage/> } />
+        <Route path="/user/verify/:token?" element={<VerifyAccountPage/> } />
         <Route path="/user/verified" element={<SuccessPage purpose="verified"/> } />
       </Routes>
     </Router>
