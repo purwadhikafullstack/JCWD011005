@@ -57,16 +57,16 @@ const VerifyAccountPage = () => {
   return (
     <BlankPage>
       <FormCard>
-        <Box display={"flex"} flexDirection="column" justifyContent={"center"} alignItems={"center"} marginBottom="5">
-          <TbUserCheck size={70}/>
+        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" marginBottom="5">
+          <TbUserCheck size="70"/>
           <Text as="b" fontSize="2xl">Verifikasi Akun</Text>
           <Text>Untuk melakukan verifikasi akun anda, masukkan kode OTP yang kami kirimkan melalui email anda</Text>
         </Box>
         <form onSubmit={verifyAccountSchema.handleSubmit}>
-          <InputWithError margin={"0"} padding={"1"} errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
-            <Input type="text" name="otp" placeholder='Kode OTP' bgColor="white" borderColor={"grey"} color={"black"} value={verifyAccountSchema.values.otp} onChange={verifyAccountSchema.handleChange}/>
+          <InputWithError margin="0" padding="1" errors={verifyAccountSchema.errors.otp} touched={verifyAccountSchema.touched.otp}>
+            <Input type="text" name="otp" placeholder='Kode OTP' bgColor="white" borderColor="grey" color="black" value={verifyAccountSchema.values.otp} onChange={verifyAccountSchema.handleChange}/>
           </InputWithError>
-          <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Verifikasi</Button>
+          <Button type="submit" colorScheme="green" isLoading={isLoading} marginX="5" marginTop="5">Verifikasi</Button>
         </form>
         
         <ModalRegular isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
