@@ -60,6 +60,9 @@ module.exports = {
         allowNull: false,
         defaultValue: false,
         type: Sequelize.BOOLEAN
+      },
+      login_method_id: {
+        type: Sequelize.INTEGER,
       }
     }, {
       createdAt: false,
