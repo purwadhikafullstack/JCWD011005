@@ -1,55 +1,55 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
-            user_id: {
+        user_id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
         email: {
             allowNull: false,
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         password: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         first_name: {
             allowNull: false,
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         last_name: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         phone: {
             allowNull: false,
-            type: Sequelize.BIGINT
+            type: DataTypes.BIGINT
         },
         gender: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         birthdate: {
-            type: Sequelize.DATEONLY
+            type: DataTypes.DATEONLY
         },
         image_profile: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         image_id_card: {
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
         otp: {
-            type: Sequelize.INTEGER
+          type: DataTypes.INTEGER
         },
         otp_sent_a_day: {
             defaultValue: 0,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
         is_otp_expired: {
-            type: Sequelize.BOOLEAN
+            type: DataTypes.BOOLEAN
         },
         is_verified: {
             allowNull: false,
             defaultValue: false,
-            type: Sequelize.BOOLEAN
+            type: DataTypes.BOOLEAN
         }
     }, {
         createdAt: false,
