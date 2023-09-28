@@ -40,8 +40,8 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 0,
             type: DataTypes.INTEGER
         },
-        is_otp_expired: {
-            type: DataTypes.BOOLEAN
+        otp_last_sent: {
+            type: DataTypes.DATE
         },
         is_verified: {
             allowNull: false,
