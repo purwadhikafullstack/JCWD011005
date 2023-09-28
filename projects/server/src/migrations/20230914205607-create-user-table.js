@@ -32,7 +32,7 @@ module.exports = {
       },
       phone: {
         allowNull: false,
-        type: Sequelize.BIGINT
+        type: Sequelize.STRING
       },
       gender: {
         type: Sequelize.STRING
