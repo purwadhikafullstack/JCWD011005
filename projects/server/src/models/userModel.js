@@ -47,6 +47,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: false,
             type: DataTypes.BOOLEAN
+        },
+        login_method_id: {
+            type: DataTypes.INTEGER,
         }
     }, {
         createdAt: false,
