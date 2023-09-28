@@ -43,9 +43,6 @@ module.exports = {
       image_profile: {
         type: Sequelize.STRING
       },
-      image_id_card: {
-        type: Sequelize.STRING
-      },
       otp: {
         type: Sequelize.INTEGER
       },
