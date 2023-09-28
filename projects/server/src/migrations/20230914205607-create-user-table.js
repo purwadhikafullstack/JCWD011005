@@ -53,8 +53,8 @@ module.exports = {
         defaultValue: 0,
         type: Sequelize.INTEGER
       },
-      is_otp_expired: {
-        type: Sequelize.BOOLEAN
+      otp_last_sent: {
+        type: Sequelize.DATE
       },
       is_verified: {
         allowNull: false,
