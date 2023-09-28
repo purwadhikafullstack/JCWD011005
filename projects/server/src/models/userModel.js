@@ -33,9 +33,6 @@ module.exports = (sequelize, DataTypes) => {
         image_profile: {
             type: DataTypes.STRING
         },
-        image_id_card: {
-            type: DataTypes.STRING
-        },
         otp: {
           type: DataTypes.INTEGER
         },
