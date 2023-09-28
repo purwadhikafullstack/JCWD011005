@@ -1,14 +1,14 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const LoginMethod = sequelize.define('login_methods', {
         login_method_id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
         name: {
             allowNull: false,
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
     }, {
         createdAt: false,
