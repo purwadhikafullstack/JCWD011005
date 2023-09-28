@@ -56,6 +56,10 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
         updatedAt: false
     });
+    
+    User.associate = (models) => {
+        User.belongsTo(models.login_methods, { foreignKey: "login_method_id" });
+    };
 
     return User;
 }
