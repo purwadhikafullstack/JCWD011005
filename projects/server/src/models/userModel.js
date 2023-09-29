@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         otp_last_sent: {
+            allowNull: false,
             type: DataTypes.DATE
         },
         is_verified: {
