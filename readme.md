@@ -48,7 +48,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • Custom & Preset Components:\
 &emsp;FE-FOCA = Form Card\
 &emsp;FE-INPA = Input Password\
-&emsp;FE-INWE = Input With Error
+&emsp;FE-INWE = Input With Error\
+&emsp;FE-POTE = Popover Text
 
 • Pages:\
 &emsp;FE-BLPA = Blank Page\
