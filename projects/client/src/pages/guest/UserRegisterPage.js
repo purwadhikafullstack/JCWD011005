@@ -81,27 +81,27 @@ const UserRegisterPage = () => {
   return (
     <BlankPage>
       <FormCard gap="5">
-        <Box display={"flex"} flexDirection="column" justifyContent={"center"} alignItems={"center"} marginBottom="5">
-          <TbUserPlus size={70}/>
+        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" marginBottom="5">
+          <TbUserPlus size="70"/>
           <Text as="b" fontSize="2xl">Membuat Akun Baru</Text>
         </Box>
         <form onSubmit={userRegisterSchema.handleSubmit}>
-          <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.firstName} touched={userRegisterSchema.touched.firstName}>
-            <Input type="text" name="firstName" placeholder='Nama Depan' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.firstName} onChange={userRegisterSchema.handleChange}/>
+          <InputWithError margin="0" padding="1" errors={userRegisterSchema.errors.firstName} touched={userRegisterSchema.touched.firstName}>
+            <Input type="text" name="firstName" placeholder='Nama Depan' bgColor="white" borderColor="grey" color="black" value={userRegisterSchema.values.firstName} onChange={userRegisterSchema.handleChange}/>
           </InputWithError>
-          <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.lastName} touched={userRegisterSchema.touched.lastName}>
-            <Input type="text" name="lastName" placeholder='Nama Belakang' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.lastName} onChange={userRegisterSchema.handleChange}/>
+          <InputWithError margin="0" padding="1" errors={userRegisterSchema.errors.lastName} touched={userRegisterSchema.touched.lastName}>
+            <Input type="text" name="lastName" placeholder='Nama Belakang' bgColor="white" borderColor="grey" color="black" value={userRegisterSchema.values.lastName} onChange={userRegisterSchema.handleChange}/>
           </InputWithError>
-          <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.email} touched={userRegisterSchema.touched.email}>
-            <Input type="text" name="email" placeholder='Email' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.email} onChange={userRegisterSchema.handleChange}/>
+          <InputWithError margin="0" padding="1" errors={userRegisterSchema.errors.email} touched={userRegisterSchema.touched.email}>
+            <Input type="text" name="email" placeholder='Email' bgColor="white" borderColor="grey" color="black" value={userRegisterSchema.values.email} onChange={userRegisterSchema.handleChange}/>
           </InputWithError>
-          <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.password} touched={userRegisterSchema.touched.password}>
+          <InputWithError margin="0" padding="1" errors={userRegisterSchema.errors.password} touched={userRegisterSchema.touched.password}>
             <InputPassword name="password" value={userRegisterSchema.values.password} onChange={userRegisterSchema.handleChange} handleClick={handleClick} show={show}/>
           </InputWithError>
-          <InputWithError margin={"0"} padding={"1"} errors={userRegisterSchema.errors.phone} touched={userRegisterSchema.touched.phone}>
-            <Input type="text" name="phone" placeholder='Nomor Telepon' bgColor="white" borderColor={"grey"} color={"black"} value={userRegisterSchema.values.phone} onChange={userRegisterSchema.handleChange}/>
+          <InputWithError margin="0" padding="1" errors={userRegisterSchema.errors.phone} touched={userRegisterSchema.touched.phone}>
+            <Input type="text" name="phone" placeholder='Nomor Telepon' bgColor="white" borderColor="grey" color="black" value={userRegisterSchema.values.phone} onChange={userRegisterSchema.handleChange}/>
           </InputWithError>
-          <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Mendaftar</Button>
+          <Button type="submit" colorScheme="green" isLoading={isLoading} marginX="5" marginTop="5">Mendaftar</Button>
         </form>
         <Divider/>
         <Box display="flex" flexDirection="column" gap="5">
