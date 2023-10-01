@@ -101,6 +101,24 @@ npm run server "sequelize-cli migration:generate --name create-role-table"
 npm run server sequelize-cli db:migrate\
 npm run server sequelize db:migrate
 
+## HTTP Status Code
+Kode status HTTP digunakan untuk mengkomunikasikan hasil dari permintaan HTTP antara klien dan server, dan mereka membantu dalam memahami apa yang terjadi dalam proses pertukaran informasi antara keduanya.\
+Berikut adalah beberapa kode status HTTP yang umum beserta contoh kasus singkat yang dapat menjelaskan penggunaannya:
+1. **200 OK**: Permintaan berhasil. Contoh: Klien mengambil data dari server dengan sukses.
+2. **201 Created**: Sumber daya telah berhasil dibuat. Contoh: Klien mengirimkan permintaan POST untuk membuat entitas baru di server.
+3. **204 No Content**: Permintaan berhasil diproses, tetapi tidak ada konten yang harus dikirimkan kembali sebagai respons. Contoh: Klien mengirimkan permintaan DELETE yang berhasil menghapus entitas.
+4. **400 Bad Request**: Permintaan klien tidak dapat dipahami atau memiliki data yang tidak valid. Contoh: Klien mengirimkan data yang hilang atau tidak sesuai format.
+5. **401 Unauthorized**: Klien tidak memiliki izin atau tidak diotentikasi untuk mengakses sumber daya. Contoh: Klien mencoba mengakses sumber daya yang memerlukan otentikasi tanpa mengirimkan token otentikasi.
+6. **403 Forbidden**: Klien tidak diizinkan mengakses sumber daya, bahkan setelah otentikasi. Contoh: Klien mencoba mengakses sumber daya yang hanya boleh diakses oleh pengguna tertentu.
+7. **404 Not Found**: Sumber daya yang diminta tidak ditemukan di server. Contoh: Klien mencoba mengakses URL yang tidak valid.
+8. **500 Internal Server Error**: Terjadi kesalahan internal di sisi server yang menghentikan pemrosesan permintaan. Contoh: Terjadi kesalahan server yang tidak terduga.
+9. **502 Bad Gateway**: Server gateway atau perantara menerima respons yang tidak valid dari server upstream atau server yang digunakan untuk memproses permintaan. Contoh: Server proxy tidak dapat menghubungkan ke server aplikasi.
+10. **504 Gateway Timeout**: Server gateway atau perantara tidak menerima respons dalam waktu yang wajar dari server upstream. Contoh: Server proxy mengalami timeout ketika mencoba menghubungi server aplikasi.
+11. **503 Service Unavailable**: Server tidak dapat sementara melayani permintaan karena alasan tertentu, seperti pemeliharaan atau overload. Contoh: Server web dimatikan untuk pemeliharaan rutin.
+12. **429 Too Many Requests**: Klien telah mengirim terlalu banyak permintaan dalam waktu yang singkat. Contoh: Klien mencoba mengakses API dengan kecepatan yang melebihi batas rate limit.
+13. **301 Moved Permanently**: Sumber daya yang diminta telah berpindah secara permanen ke lokasi baru. Contoh: URL lama yang telah dihapus dan mengarahkan ke URL baru.
+14. **302 Found (atau 307 Temporary Redirect)**: Sumber daya yang diminta telah berpindah sementara ke lokasi baru. Contoh: Halaman web yang mengarahkan pengguna ke halaman login.
+15. **418 I'm a teapot**: Kode status yang lucu digunakan dalam beberapa kasus sebagai lelucon atau referensi budaya internet. Contoh: Penggunaan ini umumnya tidak digunakan dalam produksi dan digunakan dalam konteks non-serius.
 
 ## Available Scripts
 
