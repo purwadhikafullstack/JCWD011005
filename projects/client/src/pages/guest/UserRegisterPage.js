@@ -1,4 +1,4 @@
-import { Box, Button, Divider, IconButton, Input, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Divider, IconButton, Input, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import InputWithError from '../../components/input/InputWithError'
 import axios from 'axios';
@@ -106,9 +106,33 @@ const UserRegisterPage = () => {
         <Box display="flex" flexDirection="column" gap="5">
           <Text>Atau dengan cara lain:</Text>
           <Box display="flex" justifyContent="center" gap="5">
-            <IconButton aria-label='Phone' colorScheme='teal' icon={<BsFillTelephoneFill />} isRound={true} fontSize='20px' size="lg" variant='solid'/>
-            <IconButton aria-label='Google' colorScheme="white" border="1px" borderColor='gray.300' icon={<FcGoogle />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
-            <IconButton aria-label='Facebook' colorScheme='blue' icon={<BsFacebook />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
+            <Popover size="lg" trigger="hover">
+              <PopoverTrigger>
+                <IconButton aria-label='Phone' colorScheme='teal' icon={<BsFillTelephoneFill />} isRound={true} fontSize='20px' size="lg" variant='solid'/>
+              </PopoverTrigger>
+              <PopoverContent bg='teal' color="white" borderColor="transparent" width="auto">
+                <PopoverArrow  bg='teal'/>
+                <PopoverBody>Phone</PopoverBody>
+              </PopoverContent>
+            </Popover>
+            <Popover size="lg" trigger="hover">
+              <PopoverTrigger>
+                <IconButton aria-label='Google' colorScheme="white" border="1px" borderColor='gray.300' icon={<FcGoogle />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
+              </PopoverTrigger>
+            <PopoverContent bg='white' color="black" borderColor="gray.300" width="auto">
+              <PopoverArrow  bg='white'/>
+              <PopoverBody>Google</PopoverBody>
+            </PopoverContent>
+            </Popover>
+            <Popover size="lg" trigger="hover">
+              <PopoverTrigger>
+                <IconButton aria-label='Facebook' colorScheme='blue' icon={<BsFacebook />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
+              </PopoverTrigger>
+              <PopoverContent bg='blue.500' color="white" borderColor="transparent" width="auto">
+                <PopoverArrow  bg='blue.500'/>
+                <PopoverBody>Facebook</PopoverBody>
+              </PopoverContent>
+            </Popover>
           </Box>
         </Box>
         
