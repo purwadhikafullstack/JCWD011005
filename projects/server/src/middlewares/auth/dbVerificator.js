@@ -1,5 +1,4 @@
-const db = require('../../models');
-const users = db.User;
+const { users } = require('../../models');
 
 const dbVerificator = async (req, res, next) => {
     const { email, phone } = req.body;
