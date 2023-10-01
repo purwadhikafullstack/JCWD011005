@@ -12,6 +12,7 @@ import { TbAlertTriangle, TbUserPlus } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 import BlankPage from '../universal/BlankPage';
 import FormCard from '../../components/card/FormCard';
+import PopoverText from '../../components/popover/PopoverText';
 
 const UserRegisterPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -106,33 +107,15 @@ const UserRegisterPage = () => {
         <Box display="flex" flexDirection="column" gap="5">
           <Text>Atau dengan cara lain:</Text>
           <Box display="flex" justifyContent="center" gap="5">
-            <Popover size="lg" trigger="hover">
-              <PopoverTrigger>
-                <IconButton aria-label='Phone' colorScheme='teal' icon={<BsFillTelephoneFill />} isRound={true} fontSize='20px' size="lg" variant='solid'/>
-              </PopoverTrigger>
-              <PopoverContent bg='teal' color="white" borderColor="transparent" width="auto">
-                <PopoverArrow  bg='teal'/>
-                <PopoverBody>Phone</PopoverBody>
-              </PopoverContent>
-            </Popover>
-            <Popover size="lg" trigger="hover">
-              <PopoverTrigger>
-                <IconButton aria-label='Google' colorScheme="white" border="1px" borderColor='gray.300' icon={<FcGoogle />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
-              </PopoverTrigger>
-            <PopoverContent bg='white' color="black" borderColor="gray.300" width="auto">
-              <PopoverArrow  bg='white'/>
-              <PopoverBody>Google</PopoverBody>
-            </PopoverContent>
-            </Popover>
-            <Popover size="lg" trigger="hover">
-              <PopoverTrigger>
-                <IconButton aria-label='Facebook' colorScheme='blue' icon={<BsFacebook />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
-              </PopoverTrigger>
-              <PopoverContent bg='blue.500' color="white" borderColor="transparent" width="auto">
-                <PopoverArrow  bg='blue.500'/>
-                <PopoverBody>Facebook</PopoverBody>
-              </PopoverContent>
-            </Popover>
+            <PopoverText bgColor="teal" borderColor="transparent" text="Phone" textColor="white">
+              <IconButton aria-label='Phone' colorScheme='teal' icon={<BsFillTelephoneFill />} isRound={true} fontSize='20px' size="lg" variant='solid'/>
+            </PopoverText>
+            <PopoverText bgColor="white" borderColor="gray.300" text="Google" textColor="black">
+              <IconButton aria-label='Google' colorScheme="white" border="1px" borderColor='gray.300' icon={<FcGoogle />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
+            </PopoverText>
+            <PopoverText bgColor="blue.500" borderColor="transparent" text="Facebook" textColor="white">
+              <IconButton aria-label='Facebook' colorScheme='blue' icon={<BsFacebook />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
+            </PopoverText>
           </Box>
         </Box>
         
