@@ -79,7 +79,7 @@ const UserRegisterPage = () => {
   });
   return (
     <BlankPage>
-      <FormCard>
+      <FormCard gap="5">
         <Box display={"flex"} flexDirection="column" justifyContent={"center"} alignItems={"center"} marginBottom="5">
           <TbUserPlus size={70}/>
           <Text as="b" fontSize="2xl">Membuat Akun Baru</Text>
