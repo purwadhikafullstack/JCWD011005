@@ -8,6 +8,7 @@ const FormCard = (props) => {
       borderRadius={"md"} 
       boxShadow='md' 
       flexDirection="column"
+      gap={props.gap}
       minHeight="30%" 
       padding={5} 
       textAlign={"center"} 
