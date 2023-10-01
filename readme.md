@@ -59,6 +59,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 ### Server / Back End
 • Preparation:\
+&emsp;BE-INDX = index.js of server side (back-end)\
 &emsp;BE-CONF = config.js\
 &emsp;BE-SQZR = .sequelizerc\
 &emsp;BE-TRNS = Transporter
