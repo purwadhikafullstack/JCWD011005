@@ -22,7 +22,7 @@ const BlankPage = (props) => {
           <Text textAlign="center" as="b" fontSize="6xl" marginBottom="4">Pro-Rent</Text>
         </Box>
         <Divider/>
-        <Box height="100%" width="100%" display="flex" justifyContent="center" alignItems="center">
+        <Box height="100%" width="100%" display="flex" flexDirection={props.flexDirection? props.flexDirection : "row"} justifyContent="center" alignItems="center" gap="5">
           {props.children}
         </Box>
       </Box>
