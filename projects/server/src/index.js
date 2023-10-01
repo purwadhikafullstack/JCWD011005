@@ -80,3 +80,5 @@ app.listen(PORT, (err) => {
     console.log(`APP RUNNING at ${PORT} ✅`);
   }
 });
+
+app.use(express.static('public'));
