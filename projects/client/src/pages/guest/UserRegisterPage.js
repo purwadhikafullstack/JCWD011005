@@ -1,4 +1,4 @@
-import { Box, Button, Input, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Divider, IconButton, Input, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import InputWithError from '../../components/input/InputWithError'
 import axios from 'axios';
@@ -6,6 +6,8 @@ import { useFormik } from 'formik'
 import * as Yup from "yup";
 import InputPassword from '../../components/input/InputPassword';
 import ModalRegular from '../../components/modal/ModalRegular';
+import { BsFacebook, BsFillTelephoneFill } from 'react-icons/bs';
+import { FcGoogle } from 'react-icons/fc';
 import { TbAlertTriangle, TbUserPlus } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 import BlankPage from '../universal/BlankPage';
@@ -100,6 +102,15 @@ const UserRegisterPage = () => {
           </InputWithError>
           <Button type="submit" colorScheme={"green"} isLoading={isLoading} marginX="5" marginTop="5">Mendaftar</Button>
         </form>
+        <Divider/>
+        <Box display="flex" flexDirection="column" gap="5">
+          <Text>Atau dengan cara lain:</Text>
+          <Box display="flex" justifyContent="center" gap="5">
+            <IconButton aria-label='Phone' colorScheme='teal' icon={<BsFillTelephoneFill />} isRound={true} fontSize='20px' size="lg" variant='solid'/>
+            <IconButton aria-label='Google' colorScheme="white" border="1px" borderColor='gray.300' icon={<FcGoogle />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
+            <IconButton aria-label='Facebook' colorScheme='blue' icon={<BsFacebook />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
+          </Box>
+        </Box>
         
         <ModalRegular isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
           <Box display="flex" flexDirection="column" justifyContent="center">
