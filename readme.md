@@ -68,6 +68,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 • Migrations:\
 &emsp;BE-LMMI = Login Method table migration\
 &emsp;BE-ROMI = Role table migration\
+&emsp;BE-PCMI = Property Category table migration\
 &emsp;BE-USMI = User table migration
 
 • Routes:\
