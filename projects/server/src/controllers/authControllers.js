@@ -6,10 +6,65 @@ const transporter = require('../helpers/transporter');
 const fs = require('fs').promises;
 const handlebars = require('handlebars');
 const { users } = require("../models");
-const { createUserWithEmailAndPassword } = require("firebase/auth");
+const { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, getAuth } = require("firebase/auth");
 const auth = require("../firebase")
 
 const AuthController = {
+    googleOAuth: async (req, res) => {
+        console.log("[this is googleOAuth section]");
+        const provider = new GoogleAuthProvider();
+        provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
+
+        const auth = getAuth();
+        auth.useDeviceLanguage();
+
+        provider.setCustomParameters({
+            'login_hint': 'user@example.com'
+        });
+
+        console.log("[this is try section]");
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log("this is signInWithPopup section");
+
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+            console.log("result: " + result);
+            console.log("credential: " + token);
+            console.log("token: " + token);
+            console.log("user: " + user);
+            
+            return res.status(200).json({
+                message: 'Registrasi akun anda berhasil dilakukan. Silahkan [...]',
+                data: result,
+                token
+            });
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+            console.log("error: " + error);
+            console.log("errorCode: " + errorCode);
+            console.log("errorMessage: " + errorMessage);
+            console.log("email: " + email);
+            console.log("credential: " + credential);
+            
+            return res.status(503).json({
+                message: 'Mohon maaf, sedang ada pemeliharaan layanan saat ini. Silakan coba lagi nanti.',
+                error: error.message
+            });
+        });
+    },
     register: async (req, res) => {
         try {
             const { first_name, last_name, email, password, phone } = req.body;
