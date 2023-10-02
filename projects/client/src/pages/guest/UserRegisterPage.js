@@ -17,6 +17,7 @@ import PopoverText from '../../components/popover/PopoverText';
 const UserRegisterPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoading, setIsLoading] = useState(false);
+  const [googleOAuthIsLoading, setGoogleOAuthIsLoading] = useState(false);
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const navigate = useNavigate();
@@ -78,6 +79,21 @@ const UserRegisterPage = () => {
       });
     }
   });
+
+  const googleOAuth = async () => {
+    setGoogleOAuthIsLoading(true);
+    await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/googleOAuth`).then(resp => {
+      setGoogleOAuthIsLoading(false);
+      // navigate('/user/register/emailSent');
+    }).catch(err => {
+      console.log(err.response);
+      setGoogleOAuthIsLoading(false);
+      setErrorStatus(err.response.status);
+      setErrorStatusText(err.response.statusText);
+      (typeof err.response.data === 'string')? setErrorData(err.response.data) : setErrorData(err.response.data.message);
+      onOpen();
+    });
+  }
   return (
     <BlankPage>
       <FormCard gap="5">
@@ -111,7 +127,7 @@ const UserRegisterPage = () => {
               <IconButton aria-label='Phone' colorScheme='teal' icon={<BsFillTelephoneFill />} isRound={true} fontSize='20px' size="lg" variant='solid'/>
             </PopoverText>
             <PopoverText bgColor="white" borderColor="gray.300" text="Google" textColor="black">
-              <IconButton aria-label='Google' colorScheme="white" border="1px" borderColor='gray.300' icon={<FcGoogle />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
+              <IconButton aria-label='Google' colorScheme="gray" border="1px" borderColor='gray.300' icon={<FcGoogle />} isLoading={googleOAuthIsLoading} isRound={true} fontSize='30px' onClick={() => googleOAuth()} size="lg" variant='solid'/>
             </PopoverText>
             <PopoverText bgColor="blue.500" borderColor="transparent" text="Facebook" textColor="white">
               <IconButton aria-label='Facebook' colorScheme='blue' icon={<BsFacebook />} isRound={true} fontSize='30px' size="lg" variant='solid'/>
