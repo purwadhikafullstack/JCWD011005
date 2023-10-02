@@ -88,6 +88,7 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 • Models:\
 &emsp;BE-MODL = index.js of Model\
+&emsp;BE-PCMO = Property Category Model\
 &emsp;BE-USMO = User Model
 
 • Firebase:\
