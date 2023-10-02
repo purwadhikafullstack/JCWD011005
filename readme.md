@@ -82,7 +82,8 @@ This is monorepo contain frontend project using ReactJS and backend project usin
 
 • Controllers:\
 &emsp;BE-CONT = index.js of Controllers\
-&emsp;BE-AUCO = Auth Controllers
+&emsp;BE-AUCO = Auth Controllers\
+&emsp;BE-PRCO = Property Controllers
 
 • Email Content:\
 &emsp;BE-VACE = Verification Account Email Content
