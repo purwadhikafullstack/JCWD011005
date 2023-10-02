@@ -1,7 +1,4 @@
-const path = require("path");
-require("dotenv").config({
-  path: path.resolve(__dirname, '../.env')
-})
+require("dotenv/config");
 const express = require("express");
 const cors = require("cors");
 const { join } = require("path");
@@ -12,10 +9,10 @@ const PORT = process.env.PORT || 8000;
 const app = express();
 app.use(
   cors({
-    // origin: [
-    //   process.env.WHITELISTED_DOMAIN &&
-    //     process.env.WHITELISTED_DOMAIN.split(","),
-    // ],
+    origin: [
+      process.env.WHITELISTED_DOMAIN &&
+        process.env.WHITELISTED_DOMAIN.split(","),
+    ],
   })
 );
 
@@ -80,5 +77,3 @@ app.listen(PORT, (err) => {
     console.log(`APP RUNNING at ${PORT} ✅`);
   }
 });
-
-app.use(express.static('public'));
