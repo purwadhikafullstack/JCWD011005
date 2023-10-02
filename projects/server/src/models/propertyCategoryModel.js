@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const PropertyCategory = sequelize.define('property_category', {
+    const PropertyCategory = sequelize.define('property_categories', {
       property_category_id: {
         allowNull: false,
         autoIncrement: true,
