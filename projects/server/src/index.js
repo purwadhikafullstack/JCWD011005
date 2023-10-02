@@ -18,6 +18,9 @@ app.use(
 
 app.use(express.json());
 
+// make public directory's files static
+app.use(express.static('public'))
+
 //#region API ROUTES
 
 // ===========================
