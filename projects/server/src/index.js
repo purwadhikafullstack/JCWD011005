@@ -9,10 +9,10 @@ const PORT = process.env.PORT || 8000;
 const app = express();
 app.use(
   cors({
-    origin: [
-      process.env.WHITELISTED_DOMAIN &&
-        process.env.WHITELISTED_DOMAIN.split(","),
-    ],
+    // origin: [
+    //   process.env.WHITELISTED_DOMAIN &&
+    //     process.env.WHITELISTED_DOMAIN.split(","),
+    // ],
   })
 );
 
@@ -25,9 +25,10 @@ app.use("/api", express.static(join(__dirname + "/public")));
 
 // ===========================
 // NOTE : Add your routes here
-const { authRoutes } = require("./routes");
+const { authRoutes, propertyRoutes } = require("./routes");
 
 app.use("/api", authRoutes);
+app.use("/api", propertyRoutes);
 
 app.get("/api", (req, res) => {
   res.send(`Hello, this is my API`);
