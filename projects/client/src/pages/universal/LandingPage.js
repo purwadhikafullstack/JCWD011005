@@ -7,7 +7,7 @@ const LandingPage = () => {
     <BlankPage flexDirection="column">
       <Box height="50%" width="100%" border="1px">
         {/* <Image src="../../public/header.jpg" alt='Header Image'/> */}
-        <Image src={`${process.env.REACT_APP_SERVER_BASE_URL}/heros/header.jpg`} alt='Header Image' fallbackSrc="https://via.placeholder.com/900x300"/>
+        <Image src={`http://localhost:8000/api/heros/header.jpg`} alt='Header Image' fallbackSrc="https://via.placeholder.com/900x300"/>
       </Box>
       <Box display="flex" flexDirection="row" backgroundColor="white" borderRadius="15" gap="5" padding="5">
         <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
