@@ -19,7 +19,7 @@ app.use(
 app.use(express.json());
 
 // make public directory's files static
-app.use(express.static('public'))
+app.use("/api", express.static(join(__dirname + "/public")));
 
 //#region API ROUTES
 
