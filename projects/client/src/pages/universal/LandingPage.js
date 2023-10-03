@@ -1,8 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import BlankPage from './BlankPage'
-import { Box, Button, Image, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Image, Input, Text, useDisclosure } from '@chakra-ui/react'
+import axios from 'axios';
+import ModalRegular from '../../components/modal/ModalRegular';
+import { TbAlertTriangle } from 'react-icons/tb';
 
 const LandingPage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [categories, setCategories] = useState([]);
+    
+  const [errorStatus, setErrorStatus] = useState("");
+  const [errorStatusText, setErrorStatusText] = useState("");
+  const [errorData, setErrorData] = useState("");
+
+  const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
+    <TbAlertTriangle size={70}/>
+    <Text as={"b"} fontSize="2xl">Kesalahan</Text>
+  </Box>;
+
+  const fetchData = async () => {
+    await axios.post(`${process.env.REACT_APP_API_BASE_URL}/property/categories`).then(resp => {
+      // setIsLoading(false);
+      // navigate('/user/register/emailSent');
+      setCategories(resp);
+      console.log(resp);
+    }).catch(err => {
+      console.log(err.response);
+      // setIsLoading(false);
+      setErrorStatus(err.response.status);
+      setErrorStatusText(err.response.statusText);
+      // (typeof err.response.data === 'string')? setErrorData(err.response.data) : setErrorData(err.response.data.message);
+      onOpen();
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+}, []);
   return (
       // <BlankPage flexDirection="column">
     <Box>
@@ -19,15 +53,24 @@ const LandingPage = () => {
           <Button type="submit">Cari</Button>
         </Box>
         <Text>Kategori</Text>
-        <Box display="flex" flexDirection="row">
-          <Box display="flex" flexDirection="row">
-            {/* <Box maxHeight="25%" maxWidth="25%" border="1px" borderRadius="5"> */}
-              <Image boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/jakarta.jpg`} alt='Jakarta Image'/>
-            {/* </Box> */}
-            <Text>Jakarta</Text>
-          </Box>
+        <Box display="flex" flexDirection="row" gap="5">
+          {
+            categories.map((item, index) => (
+              <Box display="flex" flexDirection="row" id={index}>
+                <Image boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/${item.name}.jpg`} alt={`${item.name} Image`}/>
+                <Text>${item.name}</Text>
+              </Box>
+            ))
+          }
         </Box>
       </Box>
+        
+      <ModalRegular isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
+        <Box display="flex" flexDirection="column" justifyContent="center">
+          <Text as="b" fontSize="lg">{errorData}</Text>
+          <Text>({errorStatus} {errorStatusText})</Text>
+        </Box>
+      </ModalRegular>
     </Box>
     // </BlankPage>
   )
