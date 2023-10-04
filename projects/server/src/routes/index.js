@@ -1,5 +1,5 @@
-// const exampleRoutes = require("./exampleRoutes");
+const propertyRoutes = require("./propertyRoutes");
 
 module.exports = {
-    // exampleRoutes,
+    propertyRoutes,
 };
