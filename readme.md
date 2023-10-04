@@ -95,7 +95,8 @@ For auth uses only:
 • Email Content:\
 
 • Models:\
-&emsp;BE-MODL = index.js of Model
+&emsp;BE-MODL = index.js of Model\
+&emsp;BE-PCMO = Property Category Model
 
 • Firebase:
 
