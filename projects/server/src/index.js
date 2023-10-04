@@ -23,6 +23,9 @@ app.use(express.json());
 // ===========================
 // NOTE : Add your routes here
 
+// make public directory's files static
+app.use("/api", express.static(join(__dirname + "/public")));
+
 app.get("/api", (req, res) => {
   res.send(`Hello, this is my API`);
 });
