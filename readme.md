@@ -89,7 +89,8 @@ For auth uses only:
 &emsp;BE-MIDL = index.js of Middlewares
 
 • Controllers:\
-&emsp;BE-CONT = index.js of Controllers
+&emsp;BE-CONT = index.js of Controllers\
+&emsp;BE-PRCO = Property controller
 
 • Email Content:\
 
