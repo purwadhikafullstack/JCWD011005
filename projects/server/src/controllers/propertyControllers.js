@@ -3,7 +3,7 @@ const { property_category } = require("../models");
 const PropertyController = {
     getCategories: async (req, res) => {
         try {
-            const result = await db.property_category.findAll();
+            const result = await property_category.findAll();
             console.log(result);
             console.log("All categories:", JSON.stringify(result, null, 2));
             
