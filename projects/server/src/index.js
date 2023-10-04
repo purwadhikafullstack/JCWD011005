@@ -22,6 +22,8 @@ app.use(express.json());
 
 // ===========================
 // NOTE : Add your routes here
+const { propertyRoutes } = require("./routes");
+app.use("/api", propertyRoutes);
 
 // make public directory's files static
 app.use("/api", express.static(join(__dirname + "/public")));
