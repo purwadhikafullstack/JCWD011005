@@ -20,7 +20,6 @@ const getAvailableProperties = async (req, res) => {
       };
     }
 
-    // Find all properties with the specified category and include rooms
     const properties = await Property.findAll({
       attributes: ['property_id'],
       where: whereCondition,
@@ -45,7 +44,6 @@ const getAvailableProperties = async (req, res) => {
       ],
     });
 
-    // Extract room IDs from the properties
     const roomIds = properties.reduce((roomIds, property) => {
       if (property.Rooms) {
         roomIds.push(...property.Rooms.map(room => room.room_id));
@@ -53,7 +51,6 @@ const getAvailableProperties = async (req, res) => {
       return roomIds;
     }, []);
 
-    // Exclude booked rooms based on TransactionItems using room IDs and date range
     if (roomIds.length > 0 && start_date && end_date) {
       const excludedRoomIds = await TransactionItem.findAll({
         attributes: ['room_id'],
@@ -71,7 +68,6 @@ const getAvailableProperties = async (req, res) => {
         return !excludedRoomIds.some(excluded => excluded.room_id === roomId);
       });
 
-      // Fetch room events by room_id and date range
       const roomEvents = await RoomEvents.findAll({
         where: {
           room_id: {
@@ -83,21 +79,19 @@ const getAvailableProperties = async (req, res) => {
         },
       });
 
-      // Calculate room prices based on room events and retrieve available properties
       const availableProperties = await Property.findAll({
         where: {
           property_id: {
             [Op.in]: properties.map(property => property.property_id),
           },
         },
-        // Order criteria can be added here if needed
         offset: (currentPage - 1) * itemsPerPage,
         limit: itemsPerPage,
       });
 
       for (const property of availableProperties) {
         if (property.Rooms) {
-          let cheapestRoomPrice = Infinity; // Initialize with a high value
+          let cheapestRoomPrice = Infinity; 
           for (const room of property.Rooms) {
             const matchingRoomEvents = room.RoomEvents || [];
             const roomPrice = calculateCheapestPrice(room, matchingRoomEvents);
@@ -121,7 +115,6 @@ const getAvailableProperties = async (req, res) => {
         properties: availableProperties,
       });
     } else {
-      // If no room IDs or date range provided, return an empty result
       return res.status(200).json({
         message: "No available properties found",
         totalRows: 0,
