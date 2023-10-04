@@ -2,6 +2,11 @@ require("dotenv/config");
 const express = require("express");
 const cors = require("cors");
 const { join } = require("path");
+const db = require("../models");
+const { authRoute, propertyRoute } = require("./routes");
+const {admin} = require("./services/firebase-admin")
+
+//db.sequelize.sync({ alter: true });
 
 const PORT = process.env.PORT || 8000;
 const app = express();
@@ -20,6 +25,9 @@ app.use(express.json());
 
 // ===========================
 // NOTE : Add your routes here
+
+app.use("/api/auth", authRoute)
+app.use("/api/properties", propertyRoute)
 
 app.get("/api", (req, res) => {
   res.send(`Hello, this is my API`);
