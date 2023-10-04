@@ -1,5 +1,5 @@
-// const exampleController = require("./exampleController");
+const propertyController = require("./propertyController");
 
 module.exports = {
-    // exampleController,
+    propertyController,
 }
