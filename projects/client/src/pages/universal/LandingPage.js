@@ -20,8 +20,8 @@ const LandingPage = () => {
   const fetchData = async () => {
     await axios.post(`${process.env.REACT_APP_API_BASE_URL}/property/categories`).then(resp => {
       // setIsLoading(false);
-      setCategories(resp);
-      console.log(resp);
+      setCategories(resp.data.data);
+      // console.log(resp);
     }).catch(err => {
       console.log(err.response);
       // setIsLoading(false);
@@ -35,6 +35,7 @@ const LandingPage = () => {
   useEffect(() => {
     fetchData();
 }, []);
+console.log(categories)
   return (
     <Box>
       <Box maxHeight="500px" width="100%" border="1px">
@@ -57,7 +58,7 @@ const LandingPage = () => {
                 <Text>${item.name}</Text>
               </Box>
             ))
-            : "This is Landing Page"
+            : <Box bgColor="red"><Text>This is Landing Page</Text></Box>
           }
         </Box>
       </Box>

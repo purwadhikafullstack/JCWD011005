@@ -4,8 +4,8 @@ const PropertyController = {
     getCategories: async (req, res) => {
         try {
             const result = await property_category.findAll();
-            console.log(result);
-            console.log("All categories:", JSON.stringify(result, null, 2));
+            // console.log(result);
+            // console.log("All categories:", JSON.stringify(result, null, 2));
             
             return res.status(200).json({
                 message: 'Data kategori properti berhasil diambil',
