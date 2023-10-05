@@ -53,7 +53,7 @@ console.log(categories)
         <Box display="flex" flexDirection="row" gap="5">
           {
             (categories)? categories.map((item, index) => (
-              <Box display="flex" flexDirection="row" id={index}>
+              <Box borderRadius="15px" display="flex" flexDirection="row" alignItems="center" gap="5px" id={index}>
                 <Image boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/${item.name}.jpg`} alt={`${item.name} Image`}/>
                 <Text>${item.name}</Text>
               </Box>
