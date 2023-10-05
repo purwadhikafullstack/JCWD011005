@@ -38,28 +38,28 @@ const LandingPage = () => {
 console.log(categories)
   return (
     <Box>
-      <Box maxHeight="500px" width="100%" border="1px">
-        <Image src={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} alt='Header Image' fallbackSrc="https://via.placeholder.com/1000x500"/>
-      </Box>
-      <Box padding="5">
-        <Box display="flex" flexDirection="row" backgroundColor="white" borderRadius="15" gap="5" padding="5">
-          <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
-          <Input type='text' placeholder='Check In' backgroundColor="white" border="1px"/>
-          <Input type='text' placeholder='Check Out' backgroundColor="white" border="1px"/>
-          <Input type='text' placeholder='Tipe kamar' backgroundColor="white" border="1px"/>
-          <Button type="submit">Cari</Button>
-        </Box>
-        <Text>Kategori</Text>
-        <Box display="flex" flexDirection="row">
-          {
-            (categories)? categories.map((item, index) => (
-              <Box as="button" borderRadius="15" display="flex" flexDirection="row" alignItems="center" gap="5" _hover={{background: "blackAlpha.500"}} id={index} paddingRight="50" transition="0.3s">
-                <Image borderRadius="15px" boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/${item.name}.jpg`} alt={`${item.name} Image`}/>
-                <Text as="b" fontSize="xl">{item.name}</Text>
-              </Box>
-            ))
-            : <Box bgColor="red"><Text>This is Landing Page</Text></Box>
-          }
+      <Box bgColor="red" height={{base: "100%", lg:"100vh"}} width="100%" border="1px" overflow="clip" position="relative">
+        <Image src={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} alt='Header Image' filter='grayscale(30%)' fallbackSrc="https://via.placeholder.com/1000x500" objectFit="cover" objectPosition={{base: "0px 0px", lg: "0px -150px"}} position="absolute"/>
+        <Box padding="5" position="absolute">
+          <Box display="flex" flexDirection="row" backgroundColor="white" borderRadius="15" gap="5" padding="5">
+            <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
+            <Input type='text' placeholder='Check In' backgroundColor="white" border="1px"/>
+            <Input type='text' placeholder='Check Out' backgroundColor="white" border="1px"/>
+            <Input type='text' placeholder='Tipe kamar' backgroundColor="white" border="1px"/>
+            <Button type="submit">Cari</Button>
+          </Box>
+          <Text>Kategori</Text>
+          <Box display="flex" flexDirection="row" overflow="scroll">
+            {
+              (categories)? categories.map((item, index) => (
+                <Box as="button" borderRadius="15" display="flex" flexDirection="row" alignItems="center" gap="5" _hover={{background: "blackAlpha.500"}} id={index} paddingRight="50" transition="0.3s">
+                  <Image borderRadius="15px" boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/${item.name}.jpg`} alt={`${item.name} Image`}/>
+                  <Text as="b" fontSize="xl">{item.name}</Text>
+                </Box>
+              ))
+              : <Box bgColor="red"><Text>This is Landing Page</Text></Box>
+            }
+          </Box>
         </Box>
       </Box>
         
@@ -70,6 +70,11 @@ console.log(categories)
         </Box>
       </ModalRegular>
     </Box>
+
+    // <Box position="relative" height="500px" width="500px">
+    //   <Box bgColor="red.200" height="100%" position="absolute" width="100%">This is red box</Box>
+    //   <Box bgColor="blue.200" height="100%" display="flex" justifyContent="center" alignItems="center" position="absolute" width="100%" opacity="0.5">This is second box on top of red box</Box>
+    // </Box>
   )
 }
 
