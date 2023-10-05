@@ -55,7 +55,7 @@ console.log(categories)
             (categories)? categories.map((item, index) => (
               <Box as="button" borderRadius="15px" display="flex" flexDirection="row" alignItems="center" gap="5px" _hover={{background: "blackAlpha.500"}} transition="0.3s" id={index}>
                 <Image borderRadius="15px" boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/${item.name}.jpg`} alt={`${item.name} Image`}/>
-                <Text>${item.name}</Text>
+                <Text as="b" fontSize="xl">{item.name}</Text>
               </Box>
             ))
             : <Box bgColor="red"><Text>This is Landing Page</Text></Box>
