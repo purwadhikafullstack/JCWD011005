@@ -50,10 +50,10 @@ console.log(categories)
           <Button type="submit">Cari</Button>
         </Box>
         <Text>Kategori</Text>
-        <Box display="flex" flexDirection="row" gap="5">
+        <Box display="flex" flexDirection="row">
           {
             (categories)? categories.map((item, index) => (
-              <Box as="button" borderRadius="15px" display="flex" flexDirection="row" alignItems="center" gap="5px" _hover={{background: "blackAlpha.500"}} transition="0.3s" id={index}>
+              <Box as="button" borderRadius="15" display="flex" flexDirection="row" alignItems="center" gap="5" _hover={{background: "blackAlpha.500"}} id={index} paddingRight="50" transition="0.3s">
                 <Image borderRadius="15px" boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/${item.name}.jpg`} alt={`${item.name} Image`}/>
                 <Text as="b" fontSize="xl">{item.name}</Text>
               </Box>
