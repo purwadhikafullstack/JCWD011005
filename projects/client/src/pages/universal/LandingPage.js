@@ -39,27 +39,27 @@ console.log(categories)
   return (
     <Box>
       <Box bgColor="red" bgImage={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} bgPosition={{base: "0px 0px", lg: "0px -150px"}} bgRepeat="no-repeat" bgSize="100% auto" height={{base: "100%", lg:"90vh"}} width="100%" border="1px">
-        <Box backgroundColor="white" borderRadius="15" display="flex" flexDirection="column" gap="5" marginX="5" marginTop="35%" padding="5">
+        <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="column" gap="5" marginX="5" marginTop="35%" padding="5">
           <Box display="flex" flexDirection="row" gap="5">
             <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
             <Input type='text' placeholder='Check In' backgroundColor="white" border="1px"/>
             <Input type='text' placeholder='Check Out' backgroundColor="white" border="1px"/>
             <Input type='text' placeholder='Kamar & Jumlah Tamu' backgroundColor="white" border="1px"/>
           </Box>
-          <Button type="submit" colorScheme="blue" width="100%">Cari</Button>
-          <Text>Kategori</Text>
-          <Box display="flex" flexDirection="row" overflow="scroll">
-            {
-              (categories)? categories.map((item, index) => (
-                <Box as="button" borderRadius="15" display="flex" flexDirection="row" alignItems="center" gap="5" _hover={{background: "blackAlpha.500"}} id={index} paddingRight="50" transition="0.3s">
-                  <Image borderRadius="15px" boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/${item.name}.jpg`} alt={`${item.name} Image`}/>
-                  <Text as="b" fontSize="xl">{item.name}</Text>
-                </Box>
-              ))
-              : <Box bgColor="red"><Text>This is Landing Page</Text></Box>
-            }
-          </Box>
         </Box>
+        <Button type="submit" colorScheme="blue" width="100%">Cari</Button>
+      </Box>
+      <Text>Kategori</Text>
+      <Box display="flex" flexDirection="row" overflow="scroll">
+        {
+          (categories)? categories.map((item, index) => (
+            <Box as="button" borderRadius="15" display="flex" flexDirection="row" alignItems="center" gap="5" _hover={{background: "blackAlpha.500"}} id={index} paddingRight="50" transition="0.3s">
+              <Image borderRadius="15px" boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/${item.name}.jpg`} alt={`${item.name} Image`}/>
+              <Text as="b" fontSize="xl">{item.name}</Text>
+            </Box>
+          ))
+          : <Box bgColor="red"><Text>This is Landing Page</Text></Box>
+        }
       </Box>
         
       <ModalRegular isOpen={isOpen} onCloseX={onClose} onSubmit={onClose} primaryButton="OK" primaryButtonColor="green" title={modalAlertTitle}>
