@@ -38,16 +38,15 @@ const LandingPage = () => {
 console.log(categories)
   return (
     <Box>
-      <Box bgColor="red" height={{base: "100%", lg:"100vh"}} width="100%" border="1px" overflow="clip" position="relative">
-        <Image src={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} alt='Header Image' filter='grayscale(30%)' fallbackSrc="https://via.placeholder.com/1000x500" objectFit="cover" objectPosition={{base: "0px 0px", lg: "0px -150px"}} position="absolute"/>
-        <Box padding="5" position="absolute">
-          <Box display="flex" flexDirection="row" backgroundColor="white" borderRadius="15" gap="5" padding="5">
+      <Box bgColor="red" bgImage={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} bgPosition={{base: "0px 0px", lg: "0px -150px"}} bgRepeat="no-repeat" bgSize="100% auto" height={{base: "100%", lg:"90vh"}} width="100%" border="1px">
+        <Box backgroundColor="white" borderRadius="15" display="flex" flexDirection="column" gap="5" marginX="5" marginTop="35%" padding="5">
+          <Box display="flex" flexDirection="row" gap="5">
             <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
             <Input type='text' placeholder='Check In' backgroundColor="white" border="1px"/>
             <Input type='text' placeholder='Check Out' backgroundColor="white" border="1px"/>
-            <Input type='text' placeholder='Tipe kamar' backgroundColor="white" border="1px"/>
-            <Button type="submit">Cari</Button>
+            <Input type='text' placeholder='Kamar & Jumlah Tamu' backgroundColor="white" border="1px"/>
           </Box>
+          <Button type="submit" colorScheme="blue" width="100%">Cari</Button>
           <Text>Kategori</Text>
           <Box display="flex" flexDirection="row" overflow="scroll">
             {
@@ -73,7 +72,7 @@ console.log(categories)
 
     // <Box position="relative" height="500px" width="500px">
     //   <Box bgColor="red.200" height="100%" position="absolute" width="100%">This is red box</Box>
-    //   <Box bgColor="blue.200" height="100%" display="flex" justifyContent="center" alignItems="center" position="absolute" width="100%" opacity="0.5">This is second box on top of red box</Box>
+    //   <Box bgColor="blue.200" margin="50%" height="100%" display="flex" justifyContent="center" alignItems="center" width="100%" opacity="0.5">This is second box on top of red box</Box>
     // </Box>
   )
 }
