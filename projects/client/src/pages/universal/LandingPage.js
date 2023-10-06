@@ -10,11 +10,12 @@ import { TbAlertTriangle } from 'react-icons/tb';
 const LandingPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [errorStatus, setErrorStatus] = useState("");
   const [errorStatusText, setErrorStatusText] = useState("");
   const [errorData, setErrorData] = useState("");
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [marginX] = useState(75);
 
   const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
     <TbAlertTriangle size={70}/>
@@ -91,7 +92,7 @@ const LandingPage = () => {
     <Box display="flex" flexDirection="column" gap="5" marginBottom="5">
       <form onSubmit={roomSearchSchema.handleSubmit}>
         <Box bgColor="red" bgImage={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} bgPosition={{base: "0px 0px", lg: "0px -150px"}} bgRepeat="no-repeat" bgSize="100% auto" display="flex" alignItems="flex-end" height={{base: "100%", lg:"90vh"}} width="100%">
-          <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="row" gap="5" marginX="5" paddingBottom="2.5" paddingTop="5" paddingX="5" width="100%">
+          <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="row" gap="5" marginX={marginX} paddingBottom="2.5" paddingTop="5" paddingX="5" width="100%">
             <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
             <Input type='date' placeholder='Tanggal Check In' backgroundColor="white" border="1px"/>
             <Input type='date' placeholder='Tanggal Check Out' backgroundColor="white" border="1px"/>
@@ -99,11 +100,11 @@ const LandingPage = () => {
             <Input type='text' placeholder='Kamar & Jumlah Tamu' backgroundColor="white" border="1px"/>
           </Box>
         </Box>
-        <Box backgroundColor="white" borderBottomRadius="15" boxShadow="md" display="flex" flexDirection="row" marginX="5" paddingBottom="5" paddingTop="2.5" paddingX="5">
+        <Box backgroundColor="white" borderBottomRadius="15" boxShadow="md" display="flex" flexDirection="row" marginX={marginX} paddingBottom="5" paddingTop="2.5" paddingX="5">
           <Button type="submit" colorScheme="blue" isLoading={isLoading} width="100%">Cari</Button>
         </Box>
       </form>
-      <Box display="flex" flexDirection="column" gap="5" marginX="5">
+      <Box display="flex" flexDirection="column" gap="5" marginX={marginX}>
         <Text as="b" fontSize="2xl">Kategori</Text>
         <Box display="flex" flexDirection="row" overflow="scroll">
           {
@@ -117,7 +118,7 @@ const LandingPage = () => {
           }
         </Box>
       </Box>
-      <Box display="flex" flexDirection="column" gap="5" marginX="5">
+      <Box display="flex" flexDirection="column" gap="5" marginX={marginX}>
         This is footer
       </Box>
         
