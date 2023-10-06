@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Box, Button, Image, Input, Text, useDisclosure } from '@chakra-ui/react'
 import axios from 'axios';
+import { useFormik } from 'formik'
+import * as Yup from "yup";
 import ModalRegular from '../../components/modal/ModalRegular';
 import { TbAlertTriangle } from 'react-icons/tb';
 
 const LandingPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [categories, setCategories] = useState([]);
-    
+  const [isLoading, setIsLoading] = useState(false);
   const [errorStatus, setErrorStatus] = useState("");
   const [errorStatusText, setErrorStatusText] = useState("");
   const [errorData, setErrorData] = useState("");
+  const navigate = useNavigate();
 
   const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
     <TbAlertTriangle size={70}/>
@@ -34,21 +38,71 @@ const LandingPage = () => {
 
   useEffect(() => {
     fetchData();
-}, []);
-console.log(categories)
+  }, []);
+
+  const roomSearchSchema = useFormik({
+    initialValues: {
+      propertyName: "",
+      checkInDate: "",
+      checkOutDate: "",
+      totalGuest: ""
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!")
+        .required("Nama depan tidak boleh kosong!"),
+      lastName: Yup.string()
+        .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!"),
+      email: Yup.string()
+        .email("Format penulisan email tidak valid!")
+        .required("Email tidak boleh kosong!"),
+      password: Yup.string()
+        .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_+=,{}[\]|:;'"><>?/])[a-zA-Z\d`~!@#$%^&*()_+=,{}[\]|:;'"><>?/]+$/, "Kata sandi harus kombinasi alphanumerik dan karakter spesial!")
+        .min(6, "Kata sandi setidaknya minimal 6 karakter!")
+        .required("Kata sandi tidak boleh kosong!"),
+      phone: Yup.string()
+        .matches(/[0-9]/, "Nomor ponsel yang diperbolehkan hanya angka!")
+        .min(10, "Nomor ponsel setidaknya minimal 10 digit!")
+        .max(13, "Nomor ponsel maksimal 13 digit!")
+        .required("Nomor ponsel tidak boleh kosong!")
+    }),
+    onSubmit: async values => {
+      setIsLoading(true);
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/register`, {
+        first_name: values.firstName,
+        last_name: values.lastName,
+        email: values.email,
+        password: values.password,
+        phone: values.phone,
+      }).then(resp => {
+        setIsLoading(false);
+        navigate('/result');
+      }).catch(err => {
+        console.log(err.response);
+        setIsLoading(false);
+        setErrorStatus(err.response.status);
+        setErrorStatusText(err.response.statusText);
+        (typeof err.response.data === 'string')? setErrorData(err.response.data) : setErrorData(err.response.data.message);
+        onOpen();
+      });
+    }
+  });
   return (
     <Box>
-      <Box bgColor="red" bgImage={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} bgPosition={{base: "0px 0px", lg: "0px -150px"}} bgRepeat="no-repeat" bgSize="100% auto" height={{base: "100%", lg:"90vh"}} width="100%" border="1px">
-        <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="column" gap="5" marginX="5" marginTop="35%" padding="5">
-          <Box display="flex" flexDirection="row" gap="5">
+      <form onSubmit={roomSearchSchema.handleSubmit}>
+        <Box bgColor="red" bgImage={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} bgPosition={{base: "0px 0px", lg: "0px -150px"}} bgRepeat="no-repeat" bgSize="100% auto" display="flex" alignItems="flex-end" height={{base: "100%", lg:"90vh"}} width="100%">
+          <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="row" gap="5" marginX="5" paddingBottom="2.5" paddingTop="5" paddingX="5" width="100%">
             <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
-            <Input type='text' placeholder='Check In' backgroundColor="white" border="1px"/>
-            <Input type='text' placeholder='Check Out' backgroundColor="white" border="1px"/>
+            <Input type='date' placeholder='Tanggal Check In' backgroundColor="white" border="1px"/>
+            <Input type='date' placeholder='Tanggal Check Out' backgroundColor="white" border="1px"/>
+            <Box border="1px" borderRadius="100" width="auto">2 Malam</Box>
             <Input type='text' placeholder='Kamar & Jumlah Tamu' backgroundColor="white" border="1px"/>
           </Box>
         </Box>
-        <Button type="submit" colorScheme="blue" width="100%">Cari</Button>
-      </Box>
+        <Box backgroundColor="white" borderBottomRadius="15" boxShadow="md" display="flex" flexDirection="row" marginX="5" paddingBottom="5" paddingTop="2.5" paddingX="5">
+          <Button type="submit" colorScheme="blue" isLoading={isLoading} width="100%">Cari</Button>
+        </Box>
+      </form>
       <Text>Kategori</Text>
       <Box display="flex" flexDirection="row" overflow="scroll">
         {
