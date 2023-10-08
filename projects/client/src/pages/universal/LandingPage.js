@@ -109,7 +109,7 @@ const LandingPage = () => {
         <Box display="flex" flexDirection="row" overflowX="auto" paddingY="30px">
           {
             (categories)? categories.map((item, index) => (
-              <Box as="button" borderRadius="15" display="flex" flexDirection="row" alignItems="center" gap="5" _hover={{background: "blackAlpha.500"}} id={index} paddingRight="50" transition="0.3s">
+              <Box as="button" borderRadius="15" display="flex" flexDirection="row" alignItems="center" gap="5" _hover={{background: "blackAlpha.500"}} id={index} paddingRight="50" transition="0.3s" minWidth="400px" width="100%">
                 <Image borderRadius="15px" boxSize="100px" src={`${process.env.REACT_APP_API_BASE_URL}/categories/${item.name}.jpg`} alt={`${item.name} Image`}/>
                 <Text as="b" fontSize="xl">{item.name}</Text>
               </Box>
