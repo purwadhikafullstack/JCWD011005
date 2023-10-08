@@ -89,7 +89,7 @@ const LandingPage = () => {
     }
   });
   return (
-    <Box display="flex" flexDirection="column" gap="5" marginBottom="5">
+    <Box display="flex" flexDirection="column" gap="5">
       <form onSubmit={roomSearchSchema.handleSubmit}>
         <Box bgColor="red" bgImage={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} bgPosition={{base: "0px 0px", lg: "0px -150px"}} bgRepeat="no-repeat" bgSize="100% auto" display="flex" alignItems="flex-end" height={{base: "100%", lg:"90vh"}} width="100%">
           <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="row" gap="5" marginX={marginX} paddingBottom="2.5" paddingTop="5" paddingX="5" width="100%">
