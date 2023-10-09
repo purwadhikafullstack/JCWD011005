@@ -5,17 +5,33 @@ import axios from 'axios';
 import { useFormik } from 'formik'
 import * as Yup from "yup";
 import ModalRegular from '../../components/modal/ModalRegular';
-import { TbAlertTriangle } from 'react-icons/tb';
+import { IoBed, IoPerson } from 'react-icons/io5';
+import { TbAlertTriangle, TbLogin, TbLogout, TbSearch } from 'react-icons/tb';
+import InputWithError from '../../components/input/InputWithError';
+import InputDate from '../../components/input/InputDate';
+import InputWithLeftIcon from '../../components/input/InputWithLeftIcon';
+import DropdownMenu from '../../components/input/DropdownMenu';
 
 const LandingPage = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const [categories, setCategories] = useState([]);
   const [errorStatus, setErrorStatus] = useState("");
   const [errorStatusText, setErrorStatusText] = useState("");
   const [errorData, setErrorData] = useState("");
-  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [isMouseOverStartDate, setIsMouseOverStartDate] = useState(false);
+  const [isMouseOverEndDate, setIsMouseOverEndDate] = useState(false);
+  const [inputHeight] = useState("60px");
   const [marginX] = useState(75);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+
+  const dropdownMenuItem = [
+    {"display": "1 orang", "value": 1},
+    {"display": "2 orang", "value": 2},
+    {"display": "3 orang", "value": 3},
+    {"display": "4 orang", "value": 4},
+    {"display": "lebih dari 5 orang", "value": 5},
+  ]
 
   const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
     <TbAlertTriangle size={70}/>
@@ -69,12 +85,11 @@ const LandingPage = () => {
     }),
     onSubmit: async values => {
       setIsLoading(true);
-      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/register`, {
-        first_name: values.firstName,
-        last_name: values.lastName,
-        email: values.email,
-        password: values.password,
-        phone: values.phone,
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/greetings`, {
+        name: values.propertyName,
+        start_date: values.startDate,
+        end_date: values.endDate,
+        total_guest: values.totalGuest
       }).then(resp => {
         setIsLoading(false);
         navigate('/result');
@@ -101,17 +116,25 @@ const LandingPage = () => {
             <Text as="b" fontSize="7xl">in emotions</Text>
           </Box>
           <Box flex="1" bgColor="blackAlpha.400" display="flex" alignItems="flex-end">
-            <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="row" gap="5" marginX={marginX} paddingBottom="2.5" paddingTop="5" paddingX="5" width="100%">
-              <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
-              <Input type='date' placeholder='Tanggal Check In' backgroundColor="white" border="1px"/>
-              <Input type='date' placeholder='Tanggal Check Out' backgroundColor="white" border="1px"/>
-              <Box border="1px" borderRadius="100" width="auto">2 Malam</Box>
-              <Input type='text' placeholder='Kamar & Jumlah Tamu' backgroundColor="white" border="1px"/>
+            <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="row" alignItems="center" gap="5" marginX={marginX} paddingBottom="2.5" paddingTop="5" paddingX="5" width="100%">
+              <InputWithError margin="0" padding="1" errors={roomSearchSchema.errors.propertyName} touched={roomSearchSchema.touched.propertyName}>
+                <InputWithLeftIcon type="text" name="propertyName" placeholder='Nama Penginapan' height={inputHeight} icon={<IoBed/>} value={roomSearchSchema.values.propertyName} onChange={roomSearchSchema.handleChange}/>
+              </InputWithError>
+              <InputWithError margin="0" padding="1" width="35%" errors={roomSearchSchema.errors.startDate} touched={roomSearchSchema.touched.startDate}>
+                <InputDate type={isMouseOverStartDate} name="startDate" placeholder={'Tanggal Check In'} height={inputHeight} icon={<TbLogin/>} value={roomSearchSchema.values.startDate} onChange={roomSearchSchema.handleChange} onMouseOver={() => setIsMouseOverStartDate(true)} onMouseOut={() => setIsMouseOverStartDate(false)}/>
+              </InputWithError>
+              <InputWithError margin="0" padding="1" width="35%" errors={roomSearchSchema.errors.endDate} touched={roomSearchSchema.touched.endDate}>
+                <InputDate type={isMouseOverEndDate} name="endDate" placeholder='Tanggal Check Out' height={inputHeight} icon={<TbLogout/>} value={roomSearchSchema.values.endDate} onChange={roomSearchSchema.handleChange} onMouseOver={() => setIsMouseOverEndDate(true)} onMouseOut={() => setIsMouseOverEndDate(false)}/>
+              </InputWithError>
+              <Box as="b" border="2px" borderColor="gray" borderRadius="50" display="flex" justifyContent="center" alignItems="center" fontSize="lg" height="40px" paddingX="5" minWidth="130px">12 Malam</Box>
+              <InputWithError margin="0" padding="1" width="auto" errors={roomSearchSchema.errors.totalGuest} touched={roomSearchSchema.touched.totalGuest}>
+                <DropdownMenu icon={<IoPerson/>} buttonHeight={inputHeight} placeholder="Jumlah Tamu" value={dropdownMenuItem}></DropdownMenu>
+              </InputWithError>
             </Box>
           </Box>
         </Box>
         <Box backgroundColor="white" borderBottomRadius="15" boxShadow="md" display="flex" flexDirection="row" marginX={marginX} paddingBottom="5" paddingTop="2.5" paddingX="5">
-          <Button type="submit" colorScheme="blue" isLoading={isLoading} width="100%">Cari</Button>
+          <Button type="submit" colorScheme="blue" gap="2" isLoading={isLoading} width="100%"><TbSearch/>Cari</Button>
         </Box>
       </form>
       <Box display="flex" flexDirection="column" gap="5" marginX={marginX}>
