@@ -91,13 +91,23 @@ const LandingPage = () => {
   return (
     <Box display="flex" flexDirection="column" gap="5">
       <form onSubmit={roomSearchSchema.handleSubmit}>
-        <Box bgColor="red" bgImage={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} bgPosition={{base: "0px 0px", lg: "0px -150px"}} bgRepeat="no-repeat" bgSize="100% auto" display="flex" alignItems="flex-end" height={{base: "100%", lg:"90vh"}} width="100%">
-          <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="row" gap="5" marginX={marginX} paddingBottom="2.5" paddingTop="5" paddingX="5" width="100%">
-            <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
-            <Input type='date' placeholder='Tanggal Check In' backgroundColor="white" border="1px"/>
-            <Input type='date' placeholder='Tanggal Check Out' backgroundColor="white" border="1px"/>
-            <Box border="1px" borderRadius="100" width="auto">2 Malam</Box>
-            <Input type='text' placeholder='Kamar & Jumlah Tamu' backgroundColor="white" border="1px"/>
+        <Box bgColor="red" bgImage={`${process.env.REACT_APP_API_BASE_URL}/heros/header.jpg`} bgPosition={{base: "0px 0px", lg: "0px -150px"}} bgRepeat="no-repeat" bgSize="100% auto" display="flex" flexDirection="column" height={{base: "100%", lg:"90vh"}} width="100%">
+          <Box flex="1" bgColor="blackAlpha.400" display="flex" flexDirection="row" justifyContent="space-between" alignItems="baseline" paddingTop="50" paddingX={marginX}>
+            <Text as="b" fontSize="5xl">Pro-Rent</Text>
+            <Button size="lg" colorScheme='blue'>Login</Button>
+          </Box>
+          <Box flex="1" bgColor="blackAlpha.400" color="white" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+            <Text as="b" fontSize="7xl">Hotel for moments rich</Text>
+            <Text as="b" fontSize="7xl">in emotions</Text>
+          </Box>
+          <Box flex="1" bgColor="blackAlpha.400" display="flex" alignItems="flex-end">
+            <Box backgroundColor="white" borderTopRadius="15" display="flex" flexDirection="row" gap="5" marginX={marginX} paddingBottom="2.5" paddingTop="5" paddingX="5" width="100%">
+              <Input type='text' placeholder='Kota atau penginapan' backgroundColor="white" border="1px"/>
+              <Input type='date' placeholder='Tanggal Check In' backgroundColor="white" border="1px"/>
+              <Input type='date' placeholder='Tanggal Check Out' backgroundColor="white" border="1px"/>
+              <Box border="1px" borderRadius="100" width="auto">2 Malam</Box>
+              <Input type='text' placeholder='Kamar & Jumlah Tamu' backgroundColor="white" border="1px"/>
+            </Box>
           </Box>
         </Box>
         <Box backgroundColor="white" borderBottomRadius="15" boxShadow="md" display="flex" flexDirection="row" marginX={marginX} paddingBottom="5" paddingTop="2.5" paddingX="5">
