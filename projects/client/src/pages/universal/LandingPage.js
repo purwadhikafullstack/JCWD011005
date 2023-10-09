@@ -188,11 +188,6 @@ const LandingPage = () => {
         </Box>
       </ModalRegular>
     </Box>
-
-    // <Box position="relative" height="500px" width="500px">
-    //   <Box bgColor="red.200" height="100%" position="absolute" width="100%">This is red box</Box>
-    //   <Box bgColor="blue.200" margin="50%" height="100%" display="flex" justifyContent="center" alignItems="center" width="100%" opacity="0.5">This is second box on top of red box</Box>
-    // </Box>
   )
 }
 
