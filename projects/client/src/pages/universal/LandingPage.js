@@ -152,10 +152,10 @@ const LandingPage = () => {
         </Box>
       </Box>
       <Box bgColor="gray.200" boxShadow="md" paddingY="5">
-        <Box display="flex" flexDirection="row" gap="5" marginX={marginX}>
-          <Box display="flex" flexDirection="column" gap="5" flex="1">
+        <Box display="flex" flexDirection="row" gap="100px" marginX={marginX}>
+          <Box display="flex" flexDirection="column" gap="5" flex="2">
             <Text as="b" fontSize="2xl">About Pro-Rent</Text>
-            <Text>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+            <Text textAlign="justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
           </Box>
           <Box display="flex" flexDirection="column" gap="5" flex="1">
             <Text as="b" fontSize="lg">Company</Text>
