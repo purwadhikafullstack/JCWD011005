@@ -60,28 +60,22 @@ const LandingPage = () => {
   const roomSearchSchema = useFormik({
     initialValues: {
       propertyName: "",
-      checkInDate: "",
-      checkOutDate: "",
+      startDate: "",
+      endDate: "",
       totalGuest: ""
     },
     validationSchema: Yup.object({
-      firstName: Yup.string()
-        .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!")
-        .required("Nama depan tidak boleh kosong!"),
-      lastName: Yup.string()
-        .matches(/^[a-zA-Z]+$/, "Hanya huruf yang diperbolehkan!"),
-      email: Yup.string()
-        .email("Format penulisan email tidak valid!")
-        .required("Email tidak boleh kosong!"),
-      password: Yup.string()
-        .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_+=,{}[\]|:;'"><>?/])[a-zA-Z\d`~!@#$%^&*()_+=,{}[\]|:;'"><>?/]+$/, "Kata sandi harus kombinasi alphanumerik dan karakter spesial!")
-        .min(6, "Kata sandi setidaknya minimal 6 karakter!")
-        .required("Kata sandi tidak boleh kosong!"),
-      phone: Yup.string()
-        .matches(/[0-9]/, "Nomor ponsel yang diperbolehkan hanya angka!")
-        .min(10, "Nomor ponsel setidaknya minimal 10 digit!")
-        .max(13, "Nomor ponsel maksimal 13 digit!")
-        .required("Nomor ponsel tidak boleh kosong!")
+      propertyName: Yup.string()
+        .matches(/^[a-zA-Z0-9]+$/, "Hanya huruf dan angka yang diperbolehkan!")
+        .required("Nama penginapan tidak boleh kosong!"),
+      startDate: Yup.string()
+        .min(new Date(), "Tanggal check in telah berlalu!")
+        .required("Tanggal check in tidak boleh kosong!"),
+      endDate: Yup.string()
+        .min(Yup.ref('startDate'), "Tanggal check out minimal 1 hari setelah tanggal check in!")
+        .required("Tanggal check out tidak boleh kosong!"),
+      totalGuest: Yup.string()
+        .required("Jumlah tamu harus dipilih!")
     }),
     onSubmit: async values => {
       setIsLoading(true);
@@ -128,7 +122,7 @@ const LandingPage = () => {
               </InputWithError>
               <Box as="b" border="2px" borderColor="gray" borderRadius="50" display="flex" justifyContent="center" alignItems="center" fontSize="lg" height="40px" paddingX="5" minWidth="130px">12 Malam</Box>
               <InputWithError margin="0" padding="1" width="auto" errors={roomSearchSchema.errors.totalGuest} touched={roomSearchSchema.touched.totalGuest}>
-                <DropdownMenu icon={<IoPerson/>} buttonHeight={inputHeight} placeholder="Jumlah Tamu" value={dropdownMenuItem}></DropdownMenu>
+                <DropdownMenu icon={<IoPerson/>} buttonHeight={inputHeight} placeholder="Jumlah Tamu" value={dropdownMenuItem} onChange={roomSearchSchema.handleChange}/>
               </InputWithError>
             </Box>
           </Box>
