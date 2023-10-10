@@ -14,7 +14,7 @@ const InputWithError = (props) => {
             margin={margin}
             marginBottom={marginBottom}
             padding={padding}
-            width="100%"
+            width={(props.width)? props.width : "100%"}
             in={bool}
             sx={{
                 "transition": "background-color 0.5s ease-out"
