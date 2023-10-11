@@ -70,6 +70,7 @@ For auth uses only:
 &emsp;FE-ROUT = Client routes (App.js)
 
 • Custom & Preset Components:\
+&emsp;FE-INPA = Input Password
 
 • Pages:\
 &emsp;FE-LAPA = Landing page
