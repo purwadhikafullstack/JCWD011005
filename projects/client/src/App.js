@@ -2,9 +2,17 @@ import axios from "axios";
 import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
+import { Text } from "@chakra-ui/react";
+import { Route, Routes } from 'react-router-dom';
+import { TenantRegist } from "./pages/Tenant/TenantRegist";
+import { UserLogin } from "./pages/User/UserLogin"
+import {UserForgotPassword} from "./pages/User/UserForgotPassword"
+import { UserResetPassword } from "./pages/User/UserResetPassword";
 
 function App() {
   const [message, setMessage] = useState("");
+  const url = window.location.href.split("/");
+	const token = url[url.length - 1];
 
   useEffect(() => {
     (async () => {
@@ -19,7 +27,14 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         {message}
+        <Text>Test</Text>
       </header>
+      <Routes>
+        <Route path='/register-tenant' element={<TenantRegist/>} />
+        <Route path='/login-user' element={<UserLogin/>} />
+        <Route path='/forgot-password-user' element={<UserForgotPassword/>} />
+        <Route path={`/reset-password-user/${token}`} element={<UserResetPassword/>} />
+      </Routes>
     </div>
   );
 }
