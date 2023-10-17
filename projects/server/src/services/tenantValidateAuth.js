@@ -1,5 +1,5 @@
 const { body } = require("express-validator")
-const { Tenant } = require("../../models")
+const { Tenant } = require("../models")
 
 const registerRules = [
     body("first_name")
