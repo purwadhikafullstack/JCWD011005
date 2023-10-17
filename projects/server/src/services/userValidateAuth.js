@@ -1,5 +1,5 @@
 const { body } = require("express-validator")
-const { User, LoginMethod } = require("../../models")
+const { User, LoginMethod } = require("../models")
 const bcrypt = require("bcrypt");
 const admin = require("firebase-admin");
 
