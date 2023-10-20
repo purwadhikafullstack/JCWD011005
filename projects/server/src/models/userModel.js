@@ -1,66 +1,39 @@
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('users', {
-        user_id: {
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-            type: DataTypes.INTEGER
-        },
-        email: {
-            allowNull: false,
-            type: DataTypes.STRING
-        },
-        password: {
-            type: DataTypes.STRING
-        },
-        first_name: {
-            allowNull: false,
-            type: DataTypes.STRING
-        },
-        last_name: {
-            type: DataTypes.STRING
-        },
-        phone: {
-            allowNull: false,
-            type: DataTypes.STRING
-        },
-        gender: {
-            type: DataTypes.STRING
-        },
-        birthdate: {
-            type: DataTypes.DATEONLY
-        },
-        image_profile: {
-            type: DataTypes.STRING
-        },
-        otp: {
-          type: DataTypes.INTEGER
-        },
-        otp_sent_a_day: {
-            defaultValue: 0,
-            type: DataTypes.INTEGER
-        },
-        otp_last_sent: {
-            allowNull: false,
-            type: DataTypes.DATE
-        },
-        is_verified: {
-            allowNull: false,
-            defaultValue: false,
-            type: DataTypes.BOOLEAN
-        },
-        login_method_id: {
-            type: DataTypes.INTEGER,
-        }
-    }, {
-        createdAt: false,
-        timestamps: false,
-        updatedAt: false
-    });
-    
+    const User = sequelize.define('User', {
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      email: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
+      password: DataTypes.STRING(60),
+      first_name: DataTypes.STRING(255),
+      last_name: DataTypes.STRING(255),
+      phone: DataTypes.STRING(15),
+      gender: DataTypes.STRING(10),
+      birthdate: DataTypes.DATE,
+      image_profile: DataTypes.STRING(255),
+      is_verified: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      google: DataTypes.STRING(255),
+      login_method_id: DataTypes.INTEGER,
+      otp: DataTypes.INTEGER,
+      otp_sent_a_day: DataTypes.INTEGER,
+      otp_last_sent: DataTypes.DATE
+    }, {});
+  
     User.associate = (models) => {
-        User.belongsTo(models.login_methods, { foreignKey: "login_method_id" });
+      //User.belongsTo(models.LoginMethod, { foreignKey: 'login_method_id' });
+      User.hasMany(models.Transaction, { foreignKey: 'user_id' });
+      User.hasMany(models.Review, { foreignKey: 'user_id' });
     };
-
+  
     return User;
-}
+  };
+  
