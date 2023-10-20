@@ -25,10 +25,9 @@ app.use("/api", express.static(join(__dirname + "/public")));
 
 // ===========================
 // NOTE : Add your routes here
-const { authRoutes, propertyRoutes } = require("./routes");
+const { authRoutes } = require("./routes");
 
 app.use("/api", authRoutes);
-app.use("/api", propertyRoutes);
 
 app.get("/api", (req, res) => {
   res.send(`Hello, this is my API`);
