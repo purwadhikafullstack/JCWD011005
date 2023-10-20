@@ -11,12 +11,12 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage/> } />
-        <Route path="/user/forgotPassword" element={<SubmitEmailPage purpose="password"/> } />
-        <Route path="/user/register" element={<UserRegisterPage/> } />
-        <Route path="/user/register/emailSent" element={<SuccessPage purpose="email"/> } />
-        <Route path="/user/resendOtp" element={<SubmitEmailPage purpose="otp"/> } />
-        <Route path="/user/verify/:token?" element={<VerifyAccountPage/> } />
-        <Route path="/user/verified" element={<SuccessPage purpose="verified"/> } />
+        <Route path="/auth/user/forgotPassword" element={<SubmitEmailPage purpose="password"/> } />
+        <Route path="/auth/user/register" element={<UserRegisterPage/> } />
+        <Route path="/auth/user/register/emailSent" element={<SuccessPage purpose="email"/> } />
+        <Route path="/auth/user/resendOtp" element={<SubmitEmailPage purpose="otp"/> } />
+        <Route path="/auth/user/verify/:token?" element={<VerifyAccountPage/> } />
+        <Route path="/auth/user/verified" element={<SuccessPage purpose="verified"/> } />
       </Routes>
     </Router>
   );
