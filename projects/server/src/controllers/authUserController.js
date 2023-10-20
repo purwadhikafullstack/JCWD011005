@@ -7,7 +7,7 @@ const fs = require('fs').promises;
 const handlebars = require('handlebars');
 const { users } = require("../models");
 
-const AuthController = {
+const authUserController = {
     register: async (req, res) => {
         try {
             const { first_name, last_name, email, password, phone } = req.body;
@@ -60,4 +60,4 @@ const AuthController = {
     }
 }
 
-module.exports = AuthController;
+module.exports = authUserController;
