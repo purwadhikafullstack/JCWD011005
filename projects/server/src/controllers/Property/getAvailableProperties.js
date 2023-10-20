@@ -49,10 +49,9 @@ const getAvailableProperties = async (req, res) => {
     });
 
     const roomIds = await propertyUtils.getRoomIds(properties);
-
     if (roomIds.length > 0 && start_date && end_date) {
       const availableRoomIds = await propertyUtils.getAvailableRoomIds(roomIds, start_date, end_date);
-
+      console.log(availableRoomIds)
       const availableProperties = await Property.findAll({
         where: {
           property_id: {
@@ -96,6 +95,7 @@ const getAvailableProperties = async (req, res) => {
               },
             ],
           });
+          console.log(availableRoomIds)
       
           if (rooms.length > 0) {
             let cheapestRoomPrice = Infinity;
@@ -140,6 +140,7 @@ const getAvailableProperties = async (req, res) => {
           room_id: room.room_id,
           name: room.type,
           description: room.description,
+          max_guest: room.max_guest,
           base_price: room.base_price,
           image: room.RoomImages.map(image => ({
             path: image.path

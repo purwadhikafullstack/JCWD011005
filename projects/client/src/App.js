@@ -8,6 +8,9 @@ import { TenantRegist } from "./pages/Tenant/TenantRegist";
 import { UserLogin } from "./pages/User/UserLogin"
 import {UserForgotPassword} from "./pages/User/UserForgotPassword"
 import { UserResetPassword } from "./pages/User/UserResetPassword";
+import { PropertySearch } from "./pages/User/PropertySearch"
+import { PropertyResult } from "./pages/User/PropertyResult"
+import { PropertyDetail } from "./pages/User/PropertyDetail"
 
 function App() {
   const [message, setMessage] = useState("");
@@ -33,7 +36,10 @@ function App() {
         <Route path='/register-tenant' element={<TenantRegist/>} />
         <Route path='/login-user' element={<UserLogin/>} />
         <Route path='/forgot-password-user' element={<UserForgotPassword/>} />
-        <Route path={`/reset-password-user/${token}`} element={<UserResetPassword/>} />
+        <Route path={`/reset-password-user/${token}`} element={<UserResetPassword/>}/>
+        <Route path='/search' element={<PropertySearch/>} />
+        <Route path='/result' element={<PropertyResult/>} />
+        <Route path='/property-detail/:propertyName' element={<PropertyDetail/>} />
       </Routes>
     </div>
   );
