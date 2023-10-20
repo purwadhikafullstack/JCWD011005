@@ -32,7 +32,7 @@ const SuccessPage = (props) => {
                 <Divider marginTop="5" marginBottom="5"/>
                 <Box display="flex" gap="5">
                     <Button colorScheme="gray" flex="1" onClick={() => navigate('/')}>Home</Button>
-                    <Button colorScheme="gray" flex="1" onClick={() => navigate('/user/login')}>Login</Button>
+                    <Button colorScheme="gray" flex="1" onClick={() => navigate('/auth/user/login')}>Login</Button>
                 </Box>
             </FormCard>
         </BlankPage>
