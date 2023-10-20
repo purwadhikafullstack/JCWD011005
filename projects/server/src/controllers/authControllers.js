@@ -15,21 +15,6 @@ const AuthController = {
             const hashedPassword = await bcrypt.hash(password, salt);
             const otp = otpGenerator.generate(6, { lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false });
             
-            // await createUserWithEmailAndPassword(auth, email, password)
-            //     .then((userCredential) => {
-            //         // Signed in
-            //         const user = userCredential.user;
-            //         console.log(user);
-            //         navigate("/login")
-            //         // ...
-            //     })
-            //     .catch((error) => {
-            //         const errorCode = error.code;
-            //         const errorMessage = error.message;
-            //         console.log(errorCode, errorMessage);
-            //         // ..
-            //     });
-            
             await users.sequelize.transaction(async (t) => {
                 const result = await users.create({
                     first_name,
