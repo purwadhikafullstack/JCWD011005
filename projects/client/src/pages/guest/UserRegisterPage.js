@@ -26,9 +26,9 @@ const UserRegisterPage = () => {
   const [errorStatusText, setErrorStatusText] = useState("");
   const [errorData, setErrorData] = useState("");
   
-  const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
-    <TbAlertTriangle size={70}/>
-    <Text as={"b"} fontSize="2xl">Kesalahan</Text>
+  const modalAlertTitle = <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+    <TbAlertTriangle size="70"/>
+    <Text as="b" fontSize="2xl">Kesalahan</Text>
   </Box>;
 
   const userRegisterSchema = useFormik({
