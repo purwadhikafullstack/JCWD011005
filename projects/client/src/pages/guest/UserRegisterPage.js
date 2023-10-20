@@ -60,7 +60,7 @@ const UserRegisterPage = () => {
     }),
     onSubmit: async values => {
       setIsLoading(true);
-      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/register`, {
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/user/register`, {
         first_name: values.firstName,
         last_name: values.lastName,
         email: values.email,
@@ -68,7 +68,7 @@ const UserRegisterPage = () => {
         phone: values.phone,
       }).then(resp => {
         setIsLoading(false);
-        navigate('/user/register/emailSent');
+        navigate('/auth/user/register/emailSent');
       }).catch(err => {
         console.log(err.response);
         setIsLoading(false);
