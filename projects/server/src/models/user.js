@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
   
     User.associate = (models) => {
-      //User.belongsTo(models.LoginMethod, { foreignKey: 'login_method_id' });
+      User.belongsTo(models.LoginMethod, { foreignKey: 'login_method_id' });
       User.hasMany(models.Transaction, { foreignKey: 'user_id' });
       User.hasMany(models.Review, { foreignKey: 'user_id' });
     };
