@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import UserRegisterPage from "./pages/guest/UserRegisterPage";
 import VerifyAccountPage from "./pages/guest/VerifyAccountPage";
 import SuccessPage from "./pages/universal/SuccessPage";
 import SubmitEmailPage from "./pages/guest/SubmitEmailPage";
 import LandingPage from "./pages/universal/LandingPage";
+import UserRegisterPage from "./pages/auth/UserRegisterPage";
 
 function App() {
   return (
