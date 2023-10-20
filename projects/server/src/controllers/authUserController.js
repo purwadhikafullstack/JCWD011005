@@ -5,7 +5,7 @@ const path = require('path');
 const transporter = require('../helpers/transporter');
 const fs = require('fs').promises;
 const handlebars = require('handlebars');
-const { user } = require("../models");
+const { User } = require("../models");
 
 const authUserController = {
     register: async (req, res) => {
@@ -15,8 +15,8 @@ const authUserController = {
             const hashedPassword = await bcrypt.hash(password, salt);
             const otp = otpGenerator.generate(6, { lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false });
             
-            await user.sequelize.transaction(async (t) => {
-                const result = await user.create({
+            await User.sequelize.transaction(async (t) => {
+                const result = await User.create({
                     first_name,
                     last_name,
                     email,
