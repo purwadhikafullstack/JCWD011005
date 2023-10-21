@@ -1,5 +1,5 @@
-const propertyController = require("./propertyController");
+const firebaseController = require("./firebaseController")
 
 module.exports = {
-    propertyController,
+    firebaseController
 }

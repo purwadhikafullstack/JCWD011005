@@ -39,7 +39,7 @@ const LandingPage = () => {
   </Box>;
 
   const fetchData = async () => {
-    await axios.post(`${process.env.REACT_APP_API_BASE_URL}/property/categories`).then(resp => {
+    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/properties/category`).then(resp => {
       // setIsLoading(false);
       setCategories(resp.data.data);
       // console.log(resp);

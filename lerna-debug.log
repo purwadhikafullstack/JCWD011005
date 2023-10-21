@@ -1,11 +1,23 @@
 0 silly argv {
 0 silly argv   _: [ 'add' ],
-0 silly argv   scope: 'client',
+0 silly argv   scope: 'server',
 0 silly argv   globs: [],
-0 silly argv   lernaVersion: '5.6.2',
+0 silly argv   lernaVersion: '5.4.0',
 0 silly argv   '$0': 'node_modules\\lerna\\cli.js',
-0 silly argv   pkg: '@chakra-ui/react_@emotion/react_@emotion/styled_framer-motion'
+0 silly argv   pkg: 'multer'
 0 silly argv }
-1 notice cli v5.6.2
+1 notice cli v5.4.0
 2 verbose rootPath D:\Bootcamp\Purwadhika JCWD0110\Chapter-06_Final-Project\JCWD011005
+3 error JSONError: Unexpected token "<" (0x3C) in JSON at position 282 while parsing near "... \"dependencies\": {\r\n<<<<<<< HEAD\r\n    \"@..." in projects\client\package.json
 3 error
+3 error [0m [90m 10 |[39m   }[33m,[39m[0m
+3 error [0m [90m 11 |[39m   [32m"dependencies"[39m[33m:[39m {[0m
+3 error [0m[31m[1m>[22m[39m[90m 12 |[39m [33m<<[39m[33m<<[39m[33m<<[39m[33m<[39m [33mHEAD[39m[0m
+3 error [0m [90m    |[39m [31m[1m^[22m[39m[0m
+3 error [0m [90m 13 |[39m     [32m"@chakra-ui/react"[39m[33m:[39m [32m"^2.8.1"[39m[33m,[39m[0m
+3 error [0m [90m 14 |[39m     [32m"@emotion/react"[39m[33m:[39m [32m"^11.11.1"[39m[33m,[39m[0m
+3 error [0m [90m 15 |[39m     [32m"@emotion/styled"[39m[33m:[39m [32m"^11.11.0"[39m[33m,[39m[0m
+3 error
+3 error     at parseJson (D:\Bootcamp\Purwadhika JCWD0110\Chapter-06_Final-Project\JCWD011005\node_modules\parse-json\index.js:29:21)
+3 error     at parse (D:\Bootcamp\Purwadhika JCWD0110\Chapter-06_Final-Project\JCWD011005\node_modules\load-json-file\index.js:15:9)
+3 error     at module.exports (D:\Bootcamp\Purwadhika JCWD0110\Chapter-06_Final-Project\JCWD011005\node_modules\load-json-file\index.js:18:47)

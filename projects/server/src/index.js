@@ -2,6 +2,7 @@ require("dotenv/config");
 const express = require("express");
 const cors = require("cors");
 const { join } = require("path");
+const {admin} = require("./services/firebase-admin");
 const db = require("./models");
 // db.sequelize.sync({ alter: true });
 
@@ -22,8 +23,10 @@ app.use(express.json());
 
 // ===========================
 // NOTE : Add your routes here
-const { propertyRoutes } = require("./routes");
-app.use("/api", propertyRoutes);
+const { authRoute, propertyRoute } = require("./routes");
+
+app.use("/api/auth", authRoute)
+app.use("/api/properties", propertyRoute)
 
 // make public directory's files static
 app.use("/api", express.static(join(__dirname + "/public")));

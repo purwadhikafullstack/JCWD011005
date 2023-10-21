@@ -1,5 +1,7 @@
-const propertyRoutes = require("./propertyRoutes");
+const authRoute = require("./authRoute")
+const propertyRoute = require("./propertyRoute")
 
 module.exports = {
-    propertyRoutes,
-};
+    authRoute,
+    propertyRoute
+}
