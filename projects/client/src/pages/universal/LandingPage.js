@@ -80,7 +80,19 @@ const LandingPage = () => {
         .min(currentDate, "Tanggal check in telah berlalu!")
         .required("Tanggal check in tidak boleh kosong!"),
       endDate: Yup.date()
-        .min(Yup.ref('startDate'), "Tanggal check out minimal 1 hari setelah tanggal check in!")
+        .test(
+            "",
+            "Tanggal check out minimal 1 hari setelah tanggal check in!",
+            function (value) {
+                const { startDate } = this.parent;
+                if (value.getFullYear() > startDate.getFullYear()) return true
+                else if (value.getFullYear() < startDate.getFullYear()) return false;
+                else if (value.getMonth() > startDate.getMonth()) return true;
+                else if (value.getMonth() < startDate.getMonth()) return false;
+                else if (value.getDate() > startDate.getDate()) return true;
+                else if (value.getDate() <= startDate.getDate()) return false;
+            }
+        )
         .required("Tanggal check out tidak boleh kosong!"),
       totalGuest: Yup.string()
         .required("Jumlah tamu harus dipilih!")
