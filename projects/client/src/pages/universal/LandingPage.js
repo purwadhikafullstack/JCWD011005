@@ -33,6 +33,14 @@ const LandingPage = () => {
     {"display": "lebih dari 5 orang", "value": 5},
   ]
 
+  const getCurrentDate = () => {
+      const date = new Date().getDate();
+      const month = new Date().getMonth() + 1;
+      const year = new Date().getFullYear();
+      return year+"-"+month+"-"+date;
+  }
+  const [currentDate] = useState(getCurrentDate())
+
   const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
     <TbAlertTriangle size={70}/>
     <Text as={"b"} fontSize="2xl">Kesalahan</Text>
@@ -69,7 +77,7 @@ const LandingPage = () => {
         .matches(/^[a-zA-Z0-9]+$/, "Hanya huruf dan angka yang diperbolehkan!")
         .required("Nama penginapan tidak boleh kosong!"),
       startDate: Yup.date()
-        .min(new Date(), "Tanggal check in telah berlalu!")
+        .min(currentDate, "Tanggal check in telah berlalu!")
         .required("Tanggal check in tidak boleh kosong!"),
       endDate: Yup.date()
         .min(Yup.ref('startDate'), "Tanggal check out minimal 1 hari setelah tanggal check in!")
