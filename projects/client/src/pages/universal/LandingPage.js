@@ -68,10 +68,10 @@ const LandingPage = () => {
       propertyName: Yup.string()
         .matches(/^[a-zA-Z0-9]+$/, "Hanya huruf dan angka yang diperbolehkan!")
         .required("Nama penginapan tidak boleh kosong!"),
-      startDate: Yup.string()
+      startDate: Yup.date()
         .min(new Date(), "Tanggal check in telah berlalu!")
         .required("Tanggal check in tidak boleh kosong!"),
-      endDate: Yup.string()
+      endDate: Yup.date()
         .min(Yup.ref('startDate'), "Tanggal check out minimal 1 hari setelah tanggal check in!")
         .required("Tanggal check out tidak boleh kosong!"),
       totalGuest: Yup.string()
