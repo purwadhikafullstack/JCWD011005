@@ -41,9 +41,9 @@ const LandingPage = () => {
   }
   const [currentDate] = useState(getCurrentDate())
 
-  const modalAlertTitle = <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
-    <TbAlertTriangle size={70}/>
-    <Text as={"b"} fontSize="2xl">Kesalahan</Text>
+  const modalAlertTitle = <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+    <TbAlertTriangle size="70"/>
+    <Text as="b" fontSize="2xl">Kesalahan</Text>
   </Box>;
 
   const fetchData = async () => {
