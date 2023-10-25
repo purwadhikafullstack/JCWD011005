@@ -31,7 +31,7 @@ function App() {
       </header>
       <Routes>
         <Route path='/register-tenant' element={<TenantRegist/>} />
-        <Route path='/login-user' element={<UserLogin/>} />
+        <Route path='/auth/login/user' element={<UserLogin/>} />
         <Route path='/forgot-password-user' element={<UserForgotPassword/>} />
         <Route path={`/reset-password-user/${token}`} element={<UserResetPassword/>} />
       </Routes>
