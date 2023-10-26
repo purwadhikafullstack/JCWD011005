@@ -24,11 +24,11 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         {message}
         <Text>Test</Text>
-      </header>
+      </header> */}
       <Routes>
         <Route path='/register-tenant' element={<TenantRegist/>} />
         <Route path='/auth/login/user' element={<UserLogin/>} />
