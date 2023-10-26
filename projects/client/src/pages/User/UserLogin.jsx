@@ -1,36 +1,17 @@
 import React, { useState } from "react";
-import {
-  Flex,
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  Stack,
-  Button,
-  Heading,
-  Text,
-  useColorModeValue,
-  HStack,
-  Divider,
-  FormErrorMessage,
-  useToast,
-  Center,
-  VStack,
-  InputGroup,
-  InputRightElement
-} from "@chakra-ui/react";
+import { Box, Button, Center, Divider, Flex, FormControl, FormErrorMessage, FormLabel, Heading, HStack, Input, InputGroup, InputRightElement, Stack, Text, useColorModeValue, useToast, VStack } from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { FcGoogle } from "react-icons/fc";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { auth, provider } from "../../config/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { userKeepLogin } from "../../redux/reducers/UserAuthReducer";
-import { auth, provider } from "../../config/firebase";
-import ButtonRegisterGoogle from "./component/ButtonRegisterGoogle";
 import { useNavigate } from "react-router-dom";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import ButtonRegisterGoogle from "./component/ButtonRegisterGoogle";
 import ButtonLoginGoogle from "./component/ButtonLoginGoogle";
-export const UserLogin = () => {
-  
+
+export const UserLogin = () => {  
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast()
@@ -66,85 +47,45 @@ export const UserLogin = () => {
       setIsLoading(true)
       dispatch(userKeepLogin(values, setIsLoading, toast));
     },
-    
   })
 
   return (
-    <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-    >
+    <Flex minH={"100vh"} align={"center"} justify={"center"} bg={useColorModeValue("gray.50", "gray.800")}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"}>Pro-Rent</Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
           Sign in to your account </Text>
         </Stack>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-        >
+        <Box rounded={"lg"} bg={useColorModeValue("white", "gray.700")} boxShadow={"lg"} p={8}>
           <Stack spacing={4}>
             <form onSubmit={formik.handleSubmit}>
-              <FormControl
-                id="identifier"
-                isInvalid={
-                  formik.touched.identifier && formik.errors.identifier
-                }
-              >
+              <FormControl id="identifier" isInvalid={formik.touched.identifier && formik.errors.identifier}>
                 <FormLabel>Email address or Phone Number</FormLabel>
-                <Input
-                  type="text"
-                  id="identifier"
-                  name="identifier"
-                  value={formik.values.identifier}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
+                <Input type="text" id="identifier" name="identifier" value={formik.values.identifier} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                 <FormErrorMessage textAlign="start">
                   {formik.errors.identifier}
                 </FormErrorMessage>
               </FormControl>
-              <FormControl id="password" 
-                        isInvalid={formik.touched.password && formik.errors.password}>
-                            <FormLabel>Password</FormLabel>
-                            <InputGroup>
-                                <Input
-                                type={showPassword ? "text" : "password"} name="password"
-                                value={formik.values.password}
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}/>
-                                <InputRightElement h={"full"}>
-                                    <Button
-                                    variant={"ghost"} onClick={() => setShowPassword(!showPassword)}>
-                                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                                    </Button>
-                                </InputRightElement>
-                            </InputGroup>
-                            <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
-                        </FormControl>
+              <FormControl id="password" isInvalid={formik.touched.password && formik.errors.password}>
+                <FormLabel>Password</FormLabel>
+                <InputGroup>
+                  <Input type={showPassword ? "text" : "password"} name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                  <InputRightElement h={"full"}>
+                    <Button
+                    variant={"ghost"} onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+                <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+              </FormControl>
               <Stack spacing={10}>
-                <Stack
-                  direction={{ base: "column", sm: "row" }}
-                  align={"start"}
-                  justify={"space-between"}
-                >
+                <Stack direction={{ base: "column", sm: "row" }} align={"start"} justify={"space-between"}>
                   <Button onClick={() => navigate("/forgot-password-user")} variant="link" color={"blue.400"}>Forgot password?</Button>
                 </Stack>
                 <Stack>
-                  <Button
-                    isLoading={isLoading} loadingText="Signing in"
-                    bg={"blue.400"}
-                    color={"white"}
-                    _hover={{
-                      bg: "blue.500",
-                    }}
-                    type="submit"
-                  >
+                  <Button isLoading={isLoading} loadingText="Signing in" bg={"blue.400"} color={"white"} _hover={{ bg: "blue.500" }} type="submit">
                     Sign in
                   </Button>
                   <HStack>
@@ -155,16 +96,11 @@ export const UserLogin = () => {
                     <Divider />
                   </HStack>
                   <VStack>
-                  {/* <Button
-        w={"full"}
-        maxW={"md"}
-        variant={"outline"}
-        leftIcon={<FcGoogle />}
-      >
-        <Center>
-          <Text>Sign in with Google</Text>
-        </Center>
-      </Button> */}
+                    {/* <Button w={"full"} maxW={"md"} variant={"outline"} leftIcon={<FcGoogle />}>
+                      <Center>
+                        <Text>Sign in with Google</Text>
+                      </Center>
+                    </Button> */}
                     <ButtonRegisterGoogle/>
                     <ButtonLoginGoogle/>
                   </VStack>
