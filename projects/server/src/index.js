@@ -1,9 +1,12 @@
-require("dotenv/config");
+const path = require("path");
+require("dotenv").config({
+	path: path.resolve(__dirname, "../.env"),
+});
 const express = require("express");
 const cors = require("cors");
 const { join } = require("path");
 const db = require("../models");
-const { authRoute, propertyRoute } = require("./routes");
+const { authRoute, propertyRoute, transactionRoute } = require("./routes");
 const {admin} = require("./services/firebase-admin")
 
 //db.sequelize.sync({ alter: true });
@@ -28,6 +31,8 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute)
 app.use("/api/properties", propertyRoute)
+app.use("/api/transaction", transactionRoute)
+app.use("/api/public", express.static(path.resolve(__dirname, "../public")));
 
 app.get("/api", (req, res) => {
   res.send(`Hello, this is my API`);

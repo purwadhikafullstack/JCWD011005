@@ -24,7 +24,7 @@ async function getRoomIds(properties) {
         },
       },
     });
-  
+    console.log(excludedRoomIds)
     const availableRoomIds = roomIds.filter(roomId => {
       return !excludedRoomIds.some(excluded => excluded.room_id === roomId);
     });
