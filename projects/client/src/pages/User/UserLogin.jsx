@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Card, CardBody, CardHeader, Center, Divider, Flex, FormControl, FormErrorMessage, FormLabel, Heading, HStack, Input, InputGroup, InputRightElement, Stack, Text, useColorModeValue, useToast, VStack } from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, CardHeader, Center, Divider, Flex, FormControl, FormErrorMessage, FormLabel, Heading, HStack, Image, Input, InputGroup, InputRightElement, Stack, Text, useColorModeValue, useToast, VStack } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { FcGoogle } from "react-icons/fc";
 import { useFormik } from "formik";
@@ -52,9 +52,9 @@ export const UserLogin = () => {
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"} bg={useColorModeValue("gray.50", "gray.800")}>
       <Card border="1px" borderColor="gray.300" boxShadow="md" minHeight="30%" width="30%">
-        <CardHeader>
-          <Heading fontSize={"4xl"}>Pro-Rent</Heading>
-          <Text fontSize={"lg"} color={"gray.600"}>Login User</Text>
+        <CardHeader display="flex" flexDirection="column" alignItems="center" gap="5">
+          <Image src='/images/logo/proRentLogo.svg' alt='Pro-Rent Logo'/>
+          <Heading fontSize={"3xl"}>Login User</Heading>
         </CardHeader>
         <CardBody>
           <form onSubmit={formik.handleSubmit}>
