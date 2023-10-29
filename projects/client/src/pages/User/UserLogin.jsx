@@ -10,6 +10,8 @@ import { userKeepLogin } from "../../redux/reducers/UserAuthReducer";
 import { useNavigate } from "react-router-dom";
 import ButtonRegisterGoogle from "./component/ButtonRegisterGoogle";
 import ButtonLoginGoogle from "./component/ButtonLoginGoogle";
+import InputWithError from "../../components/input/InputWithError";
+import InputPassword from "../../components/input/InputPassword";
 
 export const UserLogin = () => {  
   const dispatch = useDispatch();
@@ -58,26 +60,15 @@ export const UserLogin = () => {
         </CardHeader>
         <CardBody>
           <form onSubmit={formik.handleSubmit}>
-            <FormControl id="identifier" isInvalid={formik.touched.identifier && formik.errors.identifier}>
-              <FormLabel>Email address or Phone Number</FormLabel>
-              <Input type="text" id="identifier" name="identifier" value={formik.values.identifier} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+            <InputWithError margin="0" padding="1" errors={formik.errors.identifier} touched={formik.touched.identifier}>
+              <Input type="text" id="identifier" name="identifier" placeholder="Alamat email atau nomor telepon" bgColor="white" borderColor="grey" color="black" value={formik.values.identifier} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <FormErrorMessage textAlign="start">
                 {formik.errors.identifier}
               </FormErrorMessage>
-            </FormControl>
-            <FormControl id="password" isInvalid={formik.touched.password && formik.errors.password}>
-              <FormLabel>Password</FormLabel>
-              <InputGroup>
-                <Input type={showPassword ? "text" : "password"} name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-                <InputRightElement h={"full"}>
-                  <Button
-                  variant={"ghost"} onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-              <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
-            </FormControl>
+            </InputWithError>
+            <InputWithError margin="0" padding="1" errors={formik.errors.password} touched={formik.touched.password}>
+              <InputPassword name="password" value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} handleClick={() => setShowPassword(!showPassword)} show={showPassword}/>
+            </InputWithError>
             <Stack spacing={10}>
               <Stack direction={{ base: "column", sm: "row" }} align={"start"} justify={"space-between"}>
                 <Button onClick={() => navigate("/forgot-password-user")} variant="link" color={"blue.400"}>Forgot password?</Button>
