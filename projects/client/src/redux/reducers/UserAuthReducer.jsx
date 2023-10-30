@@ -65,7 +65,7 @@ export const userKeepLogin = (values, setIsLoading, toast) => {
               title: 'Success',
               description: "Welcome to Pro-Rent!",
               status: 'success',
-              duration: 3000,
+              duration: 5000,
               isClosable: true,
           });
           const token = login.data.token;
@@ -80,7 +80,7 @@ export const userKeepLogin = (values, setIsLoading, toast) => {
               title: 'Error',
               description: err.response.data.error || err.response.data.errors[0].msg,
               status: 'error',
-              duration: 3000,
+              duration: 5000,
               isClosable: true,
           });
       } finally {
@@ -100,7 +100,7 @@ export const userGoogleLogin = (idToken, toast) => {
         title: 'Success',
         description: "Welcome to Pro-Rent! Now you can find your best stay.",
         status: 'success',
-        duration: 3000,
+        duration: 5000,
         isClosable: true,
       });
 
@@ -118,7 +118,7 @@ export const userGoogleLogin = (idToken, toast) => {
         description:
           err.response.data.error || err.response.data.errors[0].msg,
         status: "error",
-        duration: 3000,
+        duration: 5000,
         isClosable: true,
       });
     }
@@ -140,7 +140,7 @@ export const userForgotPassword = (values, setIsLoading, toast) => {
               title: 'Success',
               description: "Please check your email to reset your password!",
               status: 'success',
-              duration: 3000,
+              duration: 5000,
               isClosable: true,
           });
           setTimeout(() => {
@@ -155,7 +155,7 @@ export const userForgotPassword = (values, setIsLoading, toast) => {
               title: 'Error',
               description: err.response.data.error || err.response.data.errors[0].msg,
               status: 'error',
-              duration: 3000,
+              duration: 5000,
               isClosable: true,
           });
       } finally {
@@ -198,7 +198,7 @@ export const userResetPassword = (values, setIsLoading, toast, token) => {
               title: 'Error',
               description: err.response.data.error || err.response.data.errors[0].msg,
               status: 'error',
-              duration: 3000,
+              duration: 5000,
               isClosable: true,
           });
       } finally {
