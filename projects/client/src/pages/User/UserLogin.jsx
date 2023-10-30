@@ -62,9 +62,6 @@ export const UserLogin = () => {
           <form onSubmit={formik.handleSubmit}>
             <InputWithError margin="0" padding="1" errors={formik.errors.identifier} touched={formik.touched.identifier}>
               <Input type="text" id="identifier" name="identifier" placeholder="Alamat email atau nomor telepon" bgColor="white" borderColor="grey" color="black" value={formik.values.identifier} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-              <FormErrorMessage textAlign="start">
-                {formik.errors.identifier}
-              </FormErrorMessage>
             </InputWithError>
             <InputWithError margin="0" padding="1" errors={formik.errors.password} touched={formik.touched.password}>
               <InputPassword name="password" value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} handleClick={() => setShowPassword(!showPassword)} show={showPassword}/>
